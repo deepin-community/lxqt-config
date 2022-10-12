@@ -1,0 +1,236 @@
+lxqt-config (0.16.1-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #864482)
+  * debian/control: updated build-deps.
+  * debian/control: drop disk-manager from recommends as it has been
+    removed from unstable. (Closes: #952967)
+  * Update debian/lxqt-config.install to ship new binary files.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Wed, 06 Jan 2021 16:09:45 +0800
+
+lxqt-config (0.14.1-4) unstable; urgency=medium
+
+  * Added build dependency libxcb-randr0-dev to fix FTBFS in testing and sid.
+    Thanks Lucas Nussbaum <lucas@debian.org> for spotting this.
+    (Closes: #952266)
+  * Bumped Standards-Version to 4.5.0, no changes needed
+  * Switched to gbp
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 24 Feb 2020 01:49:32 +0100
+
+lxqt-config (0.14.1-3) unstable; urgency=medium
+
+  * Build without touchpad support on kfreebsd and hurd, thanks
+    Paul Sonnenschein <paul@sonnenschein.ruhr> (Closes: #933336)
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 04 Aug 2019 04:07:48 +0200
+
+lxqt-config (0.14.1-2) unstable; urgency=medium
+
+  * Fixed keyboard layout switch shortcut (Closes: #925346)
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 23 Mar 2019 15:53:38 +0100
+
+lxqt-config (0.14.1-1) unstable; urgency=medium
+
+  * Cherry-picking new upstream version 0.14.1.
+  * Bumped build dependency liblxqt to 0.14.1~
+  * Extended the package description a bit
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 24 Feb 2019 20:35:48 +0100
+
+lxqt-config (0.14.0-1) unstable; urgency=medium
+
+  * Cherry-picking new upstream version 0.14.0.
+  * Bumped Standards to 4.3.0, no changes needed
+  * Dropped d/compat, use debhelper-compat = 12, no changes needed
+  * Fixed years in d/copyright
+  * Bumped minimum version liblxqt0-dev (>= 0.14.0~)
+  * Added build dependency libxi-dev
+  * Added build dependency xserver-xorg-input-libinput-dev
+  * Removed obsolete PULL_TRANSLATIONS= OFF from dh_auto_configure
+  * Added l10n-package, moved from lxqt-l10n
+  * Added d/upstream/metadata
+  * Fixed d/manpages
+  * Basic Touchpad configuration added upstream (Closes: #845624)
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 27 Jan 2019 17:15:29 +0100
+
+lxqt-config (0.13.0-1) unstable; urgency=medium
+
+  * Cherry-picking new upstream version 0.13.0.
+  * Bumped build dependency liblxqt0-dev to >= 0.13.0~
+  * Added recommend xsettingsd
+
+ -- Alf Gaida <agaida@siduction.org>  Thu, 24 May 2018 20:43:08 +0200
+
+lxqt-config (0.12.0-4) unstable; urgency=medium
+
+  * Bumped compat to 11
+  * Bumped debhelper to >=11~
+  * Bumped Standards to 4.1.4, no changes needed
+  * Changed VCS fields to salsa
+  * Changed Homepage, Source and watch to lxqt
+  * Bumped years in copyright
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 28 Apr 2018 00:22:41 +0200
+
+lxqt-config (0.12.0-3) unstable; urgency=medium
+
+  * Bumped Standards to 4.1.2, no changes needed
+  * Removed debian/gbp.conf
+  * Removed branch from VCS fields
+
+ -- Alf Gaida <agaida@siduction.org>  Thu, 14 Dec 2017 18:49:33 +0100
+
+lxqt-config (0.12.0-2) unstable; urgency=medium
+
+  * Transition to unstable
+  * Drop no longer needed patches
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 04 Dec 2017 21:33:59 +0100
+
+lxqt-config (0.12.0-1) experimental; urgency=medium
+
+  * Cherry-picking upstream release: 0.12.0.
+  * Switched to experimental
+  * Bumped Standards to 4.1.1
+  * Bumped liblxqt to >= 0.12.0
+  * Removed debian/patches - back to pure upstream
+
+ -- Alf Gaida <agaida@siduction.org>  Tue, 24 Oct 2017 16:56:57 +0200
+
+lxqt-config (0.11.1-4) unstable; urgency=medium
+
+  * Ported back some upstream changes. (Closes: #871154)
+    Make lxqt-config work with cmake > 3.7.2
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 12 Aug 2017 16:06:24 +0200
+
+lxqt-config (0.11.1-3) unstable; urgency=medium
+
+  * Fixed typo lxapperance --> lxappearance
+  * Fixed some arches to [linux-any]
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 05 Jul 2017 02:38:44 +0200
+
+lxqt-config (0.11.1-2) unstable; urgency=medium
+
+  * Bump Standards to 4.0.0 - no changes needed
+  * Recommend lxqt-qtplugin (Closes: #866234)
+  * Recommend lxqt-policykit (Closes: #866739)
+  * Recommend lxqt-session and lxqt-powermanagement (Closes: #866760)
+  * Recommend galternatives and systemconfig-printer, suggest
+    diskmanager, gparted, networkmanagement, synaptic (Closes: #866763)
+  * Recommend qt5-style-plugins and suggest adwaita-qt (Closes: #866774)
+  * Suggest gnome-themes-standard and faenza-icon-theme (Closes: #866775)
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 01 Jul 2017 18:24:12 +0200
+
+lxqt-config (0.11.1-1) unstable; urgency=medium
+
+  * Chery-picking new upstream release 0.11.1.
+  * Removed some build dependencies:
+    -cmake
+    -libqt5xdg-dev
+    -libqt5xdgiconloader-dev
+    -pkg-config
+    -qttools5-dev
+    -qttools5-dev-tools
+  * Bumped build dependency liblxqt0-dev (>= 0.11.1)
+  * Bumped years in d/copyright
+  * Added Recommends galternatives
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 02 Jan 2017 12:36:49 +0100
+
+lxqt-config (0.11.0-2) unstable; urgency=medium
+
+  * Chery-picking new upstream release 0.11.0
+  * Synced debian foo with experimental
+  * Bumped Standards to 3.9.8, no changes needed
+  * Bumped compat to 10
+  * Removed --parallel from rules, compat 10 standard
+  * Bumped build dependency debhelper (>= 10)
+  * Bumped build dependency libqtxdg-dev (>= 2.0.0)
+  * Added build-depenedency libqt5xdgiconloader-dev (>= 2.0.0)
+  * Bumped build dependency liblxqt-dev (>= 0.11.0)
+  * Added build dependency libqt5svg5-dev
+  * Added Recommends lxqt-config-l10n
+  * Added README.md to docs
+  * Exported LC_ALL=C.UTF-8 - define language settings for reproducible
+    builds
+  * Fixed .gititgnore, added build-stamp
+  * Fixed VCS fields, use https and plain /git/
+  * Fixed copyright Format
+  * Added missed new files to copyright
+  * Bumped years in copyright
+  * Fixed lintian-overrides
+  * Added DEB_BUILD_MAINT_OPTIONS = hardening=+all
+  * Added translation control
+  * Added DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+ -- Alf Gaida <agaida@siduction.org>  Tue, 18 Oct 2016 02:28:02 +0200
+
+lxqt-config (0.10.0-3) unstable; urgency=medium
+
+  * Remove dbg package in favor of dbgsym.
+
+ -- Alf Gaida <agaida@siduction.org>  Sat, 26 Dec 2015 18:36:15 +0100
+
+lxqt-config (0.10.0-2) unstable; urgency=medium
+
+  * Merge from experimental.
+  * New upstream release.
+  * Update Vcs-* fields.
+  * Update copyright.
+  * Remove Debian specific menu in favor of .desktop menu system.
+  * Install manpage for lxqt-config.
+
+ -- ChangZhuo Chen (陳昌倬) <czchen@debian.org>  Sun, 15 Nov 2015 15:15:10 +0800
+
+lxqt-config (0.9.0+20150806-2) unstable; urgency=medium
+
+  * Fixed .gitignore, removed outdated entries
+  * Fixed debian/control sorting and removed outdated versions.
+
+ -- Alf Gaida <agaida@siduction.org>  Wed, 11 Nov 2015 20:51:11 +0100
+
+lxqt-config (0.9.0+20150806-1) unstable; urgency=medium
+
+  [ Alf Gaida ]
+  * Initial release. (Closes: #747597)
+  * Added watch file.
+  * Imported Upstream version 0.8.0.
+  * Bump standards to 3.9.6.
+  * Drop build dependency libegl1-mesa-dev, bug in Qt 5.3.0 is fixed.
+  * Min Qt version 5.3.2.
+  * Min liblxqt-qt5-0-dev version 0.8.0.
+  * Mangled symbols added.
+  * Added intian-overrides.
+  * Patch some desktop files.
+  * New release 0.9.0 drop not needed patches cleanup debian $foo add
+    source/options.
+  * Some cleanup in debian $foo.
+  * Removed breaks and replaces.
+  * Fixes in copyright.
+  * Removed debian/symbols.
+  * Added link --as-needed to rules to avoid warnings at build time.
+  * Fixed licenses.
+
+  [ Andrew Lee (李健秋) ]
+  * Merging upstream version 0.9.0+20150806.
+  * Added myself as Uploader.
+  * Sorting build-depends.
+  * Drop transitional packages which don't need in debian.
+  * Removing whitespaces at EOL and EOF.
+  * Added missing build-deps libqt5svg5-dev and qtbase5-private-dev.
+  * private-lib.patch: install .so file to private lib path.
+  * No need to run ld_config as .so file installed into private lib path.
+  * Drop shlib-without-versioned-soname relared overrides.
+
+  [ Yukiharu YABUKI ]
+  * Added to ignore *~ files.
+  * Added a uploader.
+  * Added README.source -- mention for License.
+
+ -- Yukiharu YABUKI <yyabuki@debian.org>  Fri, 21 Aug 2015 19:40:47 +0900
