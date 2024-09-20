@@ -1,3 +1,9 @@
+lxqt-config (0.16.1-1deepin0) unstable; urgency=medium
+
+  * No source change upload against GCC 12.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Fri, 20 Sep 2024 12:12:54 +0800
+
 lxqt-config (0.16.1-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #864482)
