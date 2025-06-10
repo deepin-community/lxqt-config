@@ -4,92 +4,97 @@
 <context>
     <name>LocaleConfig</name>
     <message>
-        <location filename="../localeconfig.ui" line="47"/>
+        <location filename="../localeconfig.ui" line="31"/>
         <source>Re&amp;gion:</source>
         <translation>א&amp;זור:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="76"/>
+        <location filename="../localeconfig.ui" line="60"/>
         <source>De&amp;tailed Settings</source>
         <translation>הגדרות מ&amp;פורטות</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="83"/>
+        <location filename="../localeconfig.ui" line="78"/>
         <source>&amp;Numbers:</source>
         <translation>מ&amp;ספרים:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="112"/>
+        <location filename="../localeconfig.ui" line="107"/>
         <source>&amp;Time:</source>
         <translation>&amp;זמן:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="141"/>
+        <location filename="../localeconfig.ui" line="136"/>
         <source>Currenc&amp;y:</source>
         <translation>מ&amp;טבע:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="170"/>
+        <location filename="../localeconfig.ui" line="165"/>
         <source>Measurement &amp;Units:</source>
         <translation>י&amp;חידות מידה:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="199"/>
+        <location filename="../localeconfig.ui" line="194"/>
         <source>Co&amp;llation and Sorting:</source>
         <translation>&amp;איסוף ומיון:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="238"/>
-        <source>&lt;b&gt;Examples&lt;/b&gt;</source>
-        <translation>&lt;b&gt;דוגמאות&lt;/b&gt;</translation>
+        <location filename="../localeconfig.ui" line="226"/>
+        <source>Examples</source>
+        <translation>דוגמאות</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="248"/>
+        <location filename="../localeconfig.ui" line="238"/>
         <source>Numbers:</source>
         <translation>מספרים:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="268"/>
+        <location filename="../localeconfig.ui" line="258"/>
         <source>Time:</source>
         <translation>זמן:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="288"/>
+        <location filename="../localeconfig.ui" line="289"/>
         <source>Currency:</source>
         <translation>מטבע:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="308"/>
+        <location filename="../localeconfig.ui" line="309"/>
         <source>Measurement Units:</source>
         <translation>יחידות מידה:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="127"/>
-        <source>No change</source>
-        <translation>אין שינוי</translation>
+        <location filename="../localeconfig.cpp" line="164"/>
+        <source>Unset</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="316"/>
+        <location filename="../localeconfig.cpp" line="226"/>
+        <source>Current: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../localeconfig.cpp" line="370"/>
         <source>Format Settings Changed</source>
         <translation>הגדרות התבנית השתנו</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="317"/>
+        <location filename="../localeconfig.cpp" line="371"/>
         <source>Do you want to save your changes? They will take effect the next time you log in.</source>
         <translation>לשמור את השינויים? הם ייכנסו לתוקף עם הכניסה הבאה.</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="438"/>
+        <location filename="../localeconfig.cpp" line="518"/>
         <source>Imperial UK</source>
         <translation>אימפריאלית בריטית</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="442"/>
+        <location filename="../localeconfig.cpp" line="522"/>
         <source>Imperial US</source>
         <translation>אימפריאלית אמריקאית</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="446"/>
+        <location filename="../localeconfig.cpp" line="526"/>
         <source>Metric</source>
         <translation>מטרית</translation>
     </message>
@@ -97,12 +102,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="50"/>
+        <location filename="../main.cpp" line="49"/>
         <source>LXQt Locale Configuration</source>
         <translation>הגדרות מקומיות של LXQt</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="55"/>
+        <location filename="../main.cpp" line="54"/>
         <source>Locale Settings</source>
         <translation>הגדרות מקומיות</translation>
     </message>

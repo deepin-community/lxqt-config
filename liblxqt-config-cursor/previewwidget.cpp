@@ -30,8 +30,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xcursor/Xcursor.h>
 
-#include <QX11Info>
 #include <QWindow>
+#include <QGuiApplication>
 
 namespace {
     // Preview cursors
@@ -129,15 +129,19 @@ PreviewWidget::~PreviewWidget()
 void PreviewWidget::setCursorHandle(xcb_cursor_t cursorHandle)
 {
     WId wid = nativeParentWidget()->windowHandle()->winId();
-    xcb_change_window_attributes(QX11Info::connection(), wid, XCB_CW_CURSOR, &cursorHandle);
-    xcb_flush(QX11Info::connection());
+    if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
+        if (auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+            xcb_change_window_attributes(x11NativeInterface->connection(), wid, XCB_CW_CURSOR, &cursorHandle);
+            xcb_flush(x11NativeInterface->connection());
+        }
+    }
 }
 
 
 QSize PreviewWidget::sizeHint() const
 {
     int totalWidth = 0, maxHeight = 0;
-    for (const PreviewCursor *c : qAsConst(mList))
+    for (const PreviewCursor *c : std::as_const(mList))
     {
         totalWidth += c->width();
         maxHeight = qMax(c->height(), maxHeight);
@@ -154,7 +158,7 @@ void PreviewWidget::layoutItems()
         QSize size = sizeHint();
         int cursorWidth = size.width()/mList.count();
         int nextX = (width()-size.width())/2;
-        for (PreviewCursor *c : qAsConst(mList))
+        for (PreviewCursor *c : std::as_const(mList))
         {
             c->setPosition(nextX+(cursorWidth-c->width())/2, (height()-c->height())/2);
             nextX += cursorWidth;
@@ -189,7 +193,7 @@ void PreviewWidget::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
     if (mNeedLayout) layoutItems();
-    for (const PreviewCursor *c : qAsConst(mList))
+    for (const PreviewCursor *c : std::as_const(mList))
     {
         if (c->pixmap().isNull()) continue;
         p.drawPixmap(c->position(), *c);
@@ -199,7 +203,7 @@ void PreviewWidget::paintEvent(QPaintEvent *)
 void PreviewWidget::mouseMoveEvent(QMouseEvent *e)
 {
     if (mNeedLayout) layoutItems();
-    for (const PreviewCursor *c : qAsConst(mList))
+    for (const PreviewCursor *c : std::as_const(mList))
     {
         if (c->rect().contains(e->pos()))
         {
@@ -215,7 +219,8 @@ void PreviewWidget::mouseMoveEvent(QMouseEvent *e)
                 //setCursorHandle(*c); // Use default Qt5 setCursor:
                 if(mTheme != nullptr) {
                     QImage image = mTheme->loadImage(c->getName(), mCursorSize);
-                    if (! image.isNull()) setCursor(QPixmap::fromImage(image));
+                    QCursor cur(QPixmap::fromImage(image));
+                    if (! image.isNull()) setCursor(cur);
                 }
                 mCurrent = c;
             }

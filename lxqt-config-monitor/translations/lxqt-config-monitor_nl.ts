@@ -33,8 +33,25 @@
     <name>LoadSettings</name>
     <message>
         <location filename="../loadsettings.cpp" line="97"/>
-        <source>Default monitor settings has been applied. If you want change monitors settings, please, use lxqt-config-monitor.</source>
-        <translation type="unfinished"></translation>
+        <source>Default monitor settings applied.</source>
+        <translation>De standaard beeldscherminstellingen zijn toegepast.</translation>
+    </message>
+    <message>
+        <location filename="../loadsettings.cpp" line="98"/>
+        <source>Adjust your screens with LXQt Monitor Settings.</source>
+        <translation>Pas uw beeldscherminstellingen aan.</translation>
+    </message>
+    <message>
+        <location filename="../loadsettings.cpp" line="107"/>
+        <source>lxqt-config-monitor: Settings applied.</source>
+        <translation>lxqt-config-monitor: de instellingen zijn toegepast.</translation>
+    </message>
+    <message>
+        <location filename="../loadsettings.cpp" line="109"/>
+        <source>lxqt-config-monitor: Settings not applied.
+If this is a Wayland compositor, you could try kanshi to configure your monitor(s).</source>
+        <translation>lxqt-config-monitor: de instellingen zijn niet toegepast.
+Als u gebruikmaakt van Wayland, probeer dan uw beeldscherm(en) in te stellen met behulp van kanshi.</translation>
     </message>
 </context>
 <context>
@@ -50,61 +67,70 @@
         <translation>Opgeslagen instellingen</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.ui" line="38"/>
-        <source>Rename</source>
-        <translation>Hernoemen</translation>
-    </message>
-    <message>
         <location filename="../managesavedsettings.ui" line="45"/>
-        <source>Delete</source>
-        <translation>Wissen</translation>
+        <source>Rename</source>
+        <translation>Naam wijzigen</translation>
     </message>
     <message>
         <location filename="../managesavedsettings.ui" line="52"/>
-        <source>Apply</source>
-        <translation>Toepassen</translation>
+        <source>Delete</source>
+        <translation>Verwijderen</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="62"/>
+        <location filename="../managesavedsettings.cpp" line="66"/>
         <source>None</source>
         <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="65"/>
+        <location filename="../managesavedsettings.cpp" line="69"/>
         <source>Left</source>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="68"/>
+        <location filename="../managesavedsettings.cpp" line="72"/>
         <source>Inverted</source>
         <translation>Omgedraaid</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="71"/>
+        <location filename="../managesavedsettings.cpp" line="75"/>
         <source>Right</source>
         <translation>Rechts</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="75"/>
-        <location filename="../managesavedsettings.cpp" line="76"/>
+        <location filename="../managesavedsettings.cpp" line="79"/>
+        <location filename="../managesavedsettings.cpp" line="80"/>
         <source>True</source>
         <translation>Waar</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="75"/>
-        <location filename="../managesavedsettings.cpp" line="76"/>
+        <location filename="../managesavedsettings.cpp" line="79"/>
+        <location filename="../managesavedsettings.cpp" line="80"/>
         <source>False</source>
         <translation>Onwaar</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="136"/>
+        <location filename="../managesavedsettings.cpp" line="139"/>
         <source>Name</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="136"/>
+        <location filename="../managesavedsettings.cpp" line="139"/>
         <source>Name:</source>
         <translation>Naam:</translation>
+    </message>
+    <message>
+        <location filename="../managesavedsettings.cpp" line="172"/>
+        <source>Settings Activation Failed</source>
+        <translation>Toepassen van instellingen mislukt</translation>
+    </message>
+    <message>
+        <location filename="../managesavedsettings.cpp" line="173"/>
+        <source>Selected settings cannot be applied with currently active monitors.
+
+Please choose from the highlighted configurations.</source>
+        <translation>De gekozen instellingen kunnen niet worden toegepast of de actieve beeldschermen.
+
+Kies andere instellingen op basis van de gemarkeerde.</translation>
     </message>
 </context>
 <context>
@@ -112,7 +138,7 @@
     <message>
         <location filename="../monitorpicture.ui" line="27"/>
         <source>Keep monitors attached</source>
-        <translation>Houd beeldschermen aangesloten</translation>
+        <translation>Beeldschermen aangesloten houden</translation>
     </message>
 </context>
 <context>
@@ -128,17 +154,31 @@
         <translation>Instellingen</translation>
     </message>
     <message>
-        <location filename="../monitorsettingsdialog.cpp" line="105"/>
+        <location filename="../monitorsettingsdialog.cpp" line="62"/>
+        <source>Platform Unsupported</source>
+        <translation>Niet-ondersteund systeem</translation>
+    </message>
+    <message>
+        <location filename="../monitorsettingsdialog.cpp" line="63"/>
+        <source>LXQt monitor settings are currently unsupported under this wayland compositor.
+
+You can configure your monitor(s) with kanshi.</source>
+        <translation>De LXQt-beeldscherminstellingen worden momenteel niet ondersteund in combinatie met deze Wayland-vensterbeheerder.
+
+Stel de beeldschermen in met behulp van kanshi.</translation>
+    </message>
+    <message>
+        <location filename="../monitorsettingsdialog.cpp" line="118"/>
         <source>Fast Menu</source>
         <translation>Snelmenu</translation>
     </message>
     <message>
-        <location filename="../monitorsettingsdialog.cpp" line="109"/>
+        <location filename="../monitorsettingsdialog.cpp" line="122"/>
         <source>Set position</source>
         <translation>Positie instellen</translation>
     </message>
     <message>
-        <location filename="../monitorsettingsdialog.cpp" line="228"/>
+        <location filename="../monitorsettingsdialog.cpp" line="241"/>
         <source>Advanced settings</source>
         <translation>Geavanceerde instellingen</translation>
     </message>
@@ -151,32 +191,32 @@
         <translation>Instellingen</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="29"/>
+        <location filename="../monitorwidget.ui" line="64"/>
         <source> (x)</source>
         <translation> (x)</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="45"/>
+        <location filename="../monitorwidget.ui" line="80"/>
         <source> (y)</source>
         <translation> (y)</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="78"/>
+        <location filename="../monitorwidget.ui" line="36"/>
         <source>Resolution:</source>
         <translation>Resolutie:</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="90"/>
+        <location filename="../monitorwidget.ui" line="27"/>
         <source>Enable this display</source>
-        <translation>Schakel dit scherm in</translation>
+        <translation>Scherm inschakelen</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="98"/>
+        <location filename="../monitorwidget.ui" line="49"/>
         <source>This is my primary display</source>
         <translation>Dit is mijn primaire scherm</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="103"/>
+        <location filename="../monitorwidget.ui" line="54"/>
         <source>This screen extends another display</source>
         <translation>Dit scherm verlengt een ander scherm</translation>
     </message>
@@ -186,89 +226,89 @@
         <translation>Geavanceerd</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="146"/>
+        <location filename="../monitorwidget.ui" line="143"/>
         <source>Refresh rate:</source>
-        <translation>Beeldherhalingsfrequentie:</translation>
+        <translation>Ververssnelheid:</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="153"/>
+        <location filename="../monitorwidget.ui" line="133"/>
         <source>Rotation:</source>
-        <translation>Draaiing:</translation>
+        <translation>Draaien:</translation>
     </message>
     <message>
         <location filename="../monitorwidget.ui" line="176"/>
         <source>Info</source>
-        <translation>Info</translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <location filename="../monitorwidget.ui" line="182"/>
         <source>Display information</source>
-        <translation>Informatie over beeldscherm</translation>
+        <translation>Beeldscherminformatie</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="128"/>
+        <location filename="../monitorwidget.cpp" line="129"/>
         <source>Name: %1
 </source>
         <translation>Naam: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="129"/>
+        <location filename="../monitorwidget.cpp" line="130"/>
         <source>Vendor: %1
 </source>
         <translation>Fabrikant: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="130"/>
+        <location filename="../monitorwidget.cpp" line="131"/>
         <source>Serial: %1
 </source>
         <translation>Reeks: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="131"/>
+        <location filename="../monitorwidget.cpp" line="132"/>
         <source>Display size: %1cm x %2cm
 </source>
         <translation>Schermgrootte: %1cm x %2cm
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="132"/>
+        <location filename="../monitorwidget.cpp" line="133"/>
         <source>Serial number: %1
 </source>
         <translation>Serienummer: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="133"/>
+        <location filename="../monitorwidget.cpp" line="134"/>
         <source>EISA device ID: %1
 </source>
-        <translation>EISA apparaat-ID: %1
+        <translation>EISA-apparaatid: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="153"/>
+        <location filename="../monitorwidget.cpp" line="155"/>
         <source>None</source>
         <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="154"/>
-        <source>Left</source>
-        <translation>Links</translation>
-    </message>
-    <message>
-        <location filename="../monitorwidget.cpp" line="155"/>
-        <source>Right</source>
-        <translation>Rechts</translation>
-    </message>
-    <message>
         <location filename="../monitorwidget.cpp" line="156"/>
-        <source>Inverted</source>
-        <translation>Omgedraaid</translation>
+        <source>Left</source>
+        <translation>Naar links</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="244"/>
+        <location filename="../monitorwidget.cpp" line="157"/>
+        <source>Right</source>
+        <translation>Naar rechts</translation>
+    </message>
+    <message>
+        <location filename="../monitorwidget.cpp" line="158"/>
+        <source>Inverted</source>
+        <translation>Omdraaien</translation>
+    </message>
+    <message>
+        <location filename="../monitorwidget.cpp" line="248"/>
         <source>%1 Hz</source>
         <translation>%1 Hz</translation>
     </message>
@@ -278,7 +318,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="33"/>
         <source>Manage Saved Settings</source>
-        <translation>Beheer opgeslagen instellingen</translation>
+        <translation>Opgeslagen instellingen beheren</translation>
     </message>
 </context>
 <context>
@@ -299,19 +339,19 @@
     <message>
         <location filename="../timeoutdialog.ui" line="14"/>
         <source>Settings are changed</source>
-        <translation>Instellingen zijn veranderd</translation>
+        <translation>De instellingen zijn aangepast</translation>
     </message>
     <message>
         <location filename="../timeoutdialog.ui" line="46"/>
         <source>Are the current settings OK for you?</source>
-        <translation>Zijn de huidige instellingen goed voor u?</translation>
+        <translation>Zijn de huidige instellingen goed?</translation>
     </message>
     <message numerus="yes">
         <location filename="../timeoutdialog.cpp" line="63"/>
         <source>%n second(s) remaining</source>
         <translation>
-            <numerusform>%n second(en) te gaan</numerusform>
-            <numerusform>%n seconden te gaan</numerusform>
+            <numerusform>Nog %n seconde</numerusform>
+            <numerusform>Nog %n seconden</numerusform>
         </translation>
     </message>
 </context>

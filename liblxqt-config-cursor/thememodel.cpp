@@ -24,6 +24,7 @@
 #include "thememodel.h"
 
 #include <QDir>
+#include <QRegularExpression>
 
 #include "crtheme.h"
 #include "cfgfile.h"
@@ -63,8 +64,8 @@ QVariant XCursorThemeModel::headerData(int section, Qt::Orientation orientation,
         default: return QVariant();
         }
     }
-    // Numbered vertical header lables
-    return QString(section);
+    // Numbered vertical header labels
+    return QString(QChar(section));
 }
 
 QVariant XCursorThemeModel::data(const QModelIndex &index, int role) const
@@ -126,7 +127,7 @@ const QStringList XCursorThemeModel::searchPaths()
     // Get the search path from Xcursor
     QString path = QString::fromUtf8(XcursorLibraryPath());
     // Separate the paths
-    mBaseDirs = path.split(QLatin1Char(':'), QString::SkipEmptyParts);
+    mBaseDirs = path.split(QLatin1Char(':'), Qt::SkipEmptyParts);
     // Remove duplicates
     QMutableStringListIterator i(mBaseDirs);
     while (i.hasNext())
@@ -136,14 +137,14 @@ const QStringList XCursorThemeModel::searchPaths()
         while (j.hasNext()) if (j.next() == path) j.remove();
     }
     // Expand all occurrences of ~/ to the home dir
-    mBaseDirs.replaceInStrings(QRegExp(QStringLiteral("^~\\/")), QDir::home().path() + QLatin1Char('/'));
+    mBaseDirs.replaceInStrings(QRegularExpression(QStringLiteral("^~\\/")), QDir::home().path() + QLatin1Char('/'));
     return mBaseDirs;
 }
 
 bool XCursorThemeModel::hasTheme(const QString &name) const
 {
     const uint hash = qHash(name);
-    for (const XCursorThemeData *theme : qAsConst(mList)) if (theme->hash() == hash) return true;
+    for (const XCursorThemeData *theme : std::as_const(mList)) if (theme->hash() == hash) return true;
     return false;
 }
 

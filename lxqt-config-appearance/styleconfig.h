@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org/
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -32,7 +32,6 @@
 #include <LXQt/Settings>
 #include "configothertoolkits.h"
 
-class QTreeWidgetItem;
 class QSettings;
 
 namespace Ui {
@@ -44,28 +43,27 @@ class StyleConfig : public QWidget
     Q_OBJECT
 
 public:
-    explicit StyleConfig(LXQt::Settings *settings,
-        QSettings *qtSettings, LXQt::Settings *configAppearanceSettings,
-        ConfigOtherToolKits *configOtherToolKits, QWidget *parent = nullptr);
+    explicit StyleConfig(LXQt::Settings *settings, QSettings *qtSettings, QWidget *parent = nullptr);
     ~StyleConfig();
 
     void applyStyle();
+    void loadPaletteFile(const QString& paletteFile);
 
 public slots:
     void initControls();
 
 signals:
     void settingsChanged();
+    void updateOtherSettings();
 
 private slots:
-    void showAdvancedOptions(bool on);
+    void savePalette();
+    void loadPalette();
 
 private:
     Ui::StyleConfig *ui;
     QSettings *mQtSettings;
     LXQt::Settings *mSettings;
-    LXQt::Settings *mConfigAppearanceSettings;
-    ConfigOtherToolKits *mConfigOtherToolKits;
 };
 
 #endif // STYLECONFIG_H

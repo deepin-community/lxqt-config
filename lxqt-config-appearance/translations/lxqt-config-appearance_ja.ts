@@ -5,7 +5,7 @@
     <name>ColorLabel</name>
     <message>
         <location filename="../colorLabel.cpp" line="37"/>
-        <source>Click to change color.</source>
+        <source>Click to change color</source>
         <translation>色を選択するにはクリックします。</translation>
     </message>
     <message>
@@ -17,14 +17,24 @@
 <context>
     <name>ConfigOtherToolKits</name>
     <message>
-        <location filename="../configothertoolkits.cpp" line="148"/>
+        <location filename="../configothertoolkits.cpp" line="178"/>
         <source>GTK themes</source>
         <translation>GTK テーマ</translation>
     </message>
     <message>
-        <location filename="../configothertoolkits.cpp" line="149"/>
+        <location filename="../configothertoolkits.cpp" line="179"/>
         <source>&lt;p&gt;&apos;%1&apos; has been overwritten.&lt;/p&gt;&lt;p&gt;You can find a copy of your old settings in &apos;%2&apos;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&apos;%1&apos; は上書きされました。&lt;/p&gt;&lt;p&gt;&apos;%2&apos; の古い設定からコピーをすることができます。&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&apos;%1&apos; が上書きされました。&lt;/p&gt;&lt;p&gt;&apos;%2&apos; に古い設定のコピーがあります。&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../configothertoolkits.cpp" line="244"/>
+        <source>Error</source>
+        <translation>エラー</translation>
+    </message>
+    <message>
+        <location filename="../configothertoolkits.cpp" line="244"/>
+        <source>Error: gsettings cannot be run</source>
+        <translation>エラー: gsettings は実行出来ません</translation>
     </message>
 </context>
 <context>
@@ -37,7 +47,7 @@
     <message>
         <location filename="../fontsconfig.ui" line="30"/>
         <source>Default font for user interface</source>
-        <translation>ユーザーインターフェースのデフォルトのフォント</translation>
+        <translation>ユーザーインターフェースの既定のフォント</translation>
     </message>
     <message>
         <location filename="../fontsconfig.ui" line="36"/>
@@ -50,105 +60,137 @@
         <translation>スタイル:</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="53"/>
+        <location filename="../fontsconfig.ui" line="77"/>
         <source>Point size:</source>
         <translation>ポイントサイズ:</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="68"/>
+        <location filename="../fontsconfig.ui" line="54"/>
         <source>Normal</source>
         <translation>ノーマル</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="73"/>
+        <location filename="../fontsconfig.ui" line="59"/>
         <source>Bold</source>
         <translation>太字</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="78"/>
+        <location filename="../fontsconfig.ui" line="64"/>
         <source>Italic</source>
         <translation>斜体</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="83"/>
+        <location filename="../fontsconfig.ui" line="69"/>
         <source>Bold Italic</source>
         <translation>太字・斜体</translation>
     </message>
     <message>
         <location filename="../fontsconfig.ui" line="94"/>
         <source>The following settings only affect newly started applications</source>
-        <translation>以下の設定は、これから新たに実行するアプリケーションに適用されます</translation>
+        <translation>以下の設定は、これから新たに起動するアプリケーションに適用されます</translation>
     </message>
     <message>
         <location filename="../fontsconfig.ui" line="100"/>
         <source>Use antialias fonts</source>
-        <translation>アンチエイリアスされたフォントを用いる</translation>
+        <translation>アンチエイリアスのフォントを使用する</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="107"/>
+        <location filename="../fontsconfig.ui" line="153"/>
         <source>Font hinting style:</source>
         <translation>フォントのヒンティング形式:</translation>
     </message>
     <message>
         <location filename="../fontsconfig.ui" line="118"/>
-        <location filename="../fontsconfig.ui" line="183"/>
+        <location filename="../fontsconfig.ui" line="164"/>
         <source>None</source>
         <translation>なし</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="123"/>
+        <location filename="../fontsconfig.ui" line="169"/>
         <source>Slight</source>
         <translation>軽微</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="128"/>
+        <location filename="../fontsconfig.ui" line="174"/>
         <source>Medium</source>
         <translation>中間</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="133"/>
+        <location filename="../fontsconfig.ui" line="179"/>
         <source>Full</source>
         <translation>完全</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="141"/>
+        <location filename="../fontsconfig.ui" line="146"/>
         <source>Font hinting</source>
-        <translation>フォントのヒンティング</translation>
+        <translation>フォントヒンティング</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="148"/>
+        <location filename="../fontsconfig.ui" line="187"/>
         <source>Resolution (DPI):</source>
         <translation>解像度 (DPI):</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="155"/>
+        <location filename="../fontsconfig.ui" line="204"/>
         <source>Autohint</source>
         <translation>自動ヒンティング</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="172"/>
+        <location filename="../fontsconfig.ui" line="107"/>
         <source>Subpixel antialiasing:</source>
-        <translation>サブピクセルアンチエイリアス:</translation>
+        <translation>サブピクセル アンチエイリアス:</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="188"/>
+        <location filename="../fontsconfig.ui" line="123"/>
         <source>RGB</source>
         <translation>RGB</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="193"/>
+        <location filename="../fontsconfig.ui" line="128"/>
         <source>BGR</source>
         <translation>BGR</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="198"/>
+        <location filename="../fontsconfig.ui" line="133"/>
         <source>VRGB</source>
         <translation>VRGB</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="203"/>
+        <location filename="../fontsconfig.ui" line="138"/>
         <source>VBGR</source>
         <translation>VBGR</translation>
+    </message>
+</context>
+<context>
+    <name>GTKConfig</name>
+    <message>
+        <location filename="../gtkconfig.ui" line="44"/>
+        <source>GTK Style</source>
+        <translation>GTK スタイル</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="63"/>
+        <source>Set GTK themes (GTK configuration files will be overwritten!)</source>
+        <translation>GTK テーマの設定(GTK の設定ファイルが上書きされます！)</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="93"/>
+        <source>GTK 3 Theme:</source>
+        <translation>GTK3 テーマ:</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="77"/>
+        <source>GTK 2 Theme:</source>
+        <translation>GTK2 テーマ:</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="105"/>
+        <source>To attempt uniform theming, either select similar style/theme (if available) across all lists, or select &apos;gtk2&apos; Qt style (if available) to mimic GTK themes.
+
+Make sure &apos;xsettingsd&apos; is installed to help GTK applications apply themes on the fly.</source>
+        <translation>テーマを統一するには、すべてのリストで類似のスタイルやテーマを (可能ならば) 選択するか、GTK テーマを再現するために Qt スタイルで &apos;gtk2&apos; を (可能ならば) 選択して下さい。
+
+すぐに GTK アプリケーションのテーマに適用されるように、&apos;xsettingsd&apos; がインストールされていることを確認して下さい。</translation>
     </message>
 </context>
 <context>
@@ -183,41 +225,80 @@
     </message>
     <message>
         <location filename="../lxqtthemeconfig.ui" line="57"/>
-        <source>Override user-defined wallpaper</source>
-        <translation>壁紙のユーザー定義を上書きする</translation>
+        <source>Use wallpaper provided by theme</source>
+        <translation>テーマにより提供される壁紙を使用する</translation>
+    </message>
+    <message>
+        <location filename="../lxqtthemeconfig.ui" line="64"/>
+        <source>Use palette provided by theme</source>
+        <translation>テーマにより提供されるパレットを使用する</translation>
+    </message>
+    <message>
+        <location filename="../lxqtthemeconfig.cpp" line="83"/>
+        <source>(User Theme)</source>
+        <translation>(ユーザーテーマ)</translation>
+    </message>
+    <message>
+        <location filename="../lxqtthemeconfig.cpp" line="185"/>
+        <source>Open theme folder</source>
+        <translation>テーマのフォルダーを開く</translation>
+    </message>
+</context>
+<context>
+    <name>PalettesDialog</name>
+    <message>
+        <location filename="../palettes.ui" line="14"/>
+        <location filename="../palettes.ui" line="20"/>
+        <source>Palettes</source>
+        <translation>パレット</translation>
+    </message>
+    <message>
+        <location filename="../palettes.ui" line="33"/>
+        <source>Filter...</source>
+        <translation>フィルター...</translation>
+    </message>
+    <message>
+        <location filename="../palettes.ui" line="43"/>
+        <source>&amp;Remove</source>
+        <translation>削除(&amp;R)</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="58"/>
+        <location filename="../main.cpp" line="61"/>
         <source>LXQt Appearance Configuration</source>
         <translation>LXQt 外観の設定</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="71"/>
+        <location filename="../main.cpp" line="74"/>
         <source>Widget Style</source>
         <translation>ウィジェットのスタイル</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="79"/>
+        <location filename="../main.cpp" line="83"/>
         <source>Icons Theme</source>
         <translation>アイコンテーマ</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="88"/>
+        <location filename="../main.cpp" line="92"/>
         <source>LXQt Theme</source>
         <translation>LXQt テーマ</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="96"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Font</source>
         <translation>フォント</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="106"/>
+        <location filename="../main.cpp" line="110"/>
         <source>Cursor</source>
         <translation>マウスカーソル</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="117"/>
+        <source>GTK Style</source>
+        <translation>GTK スタイル</translation>
     </message>
 </context>
 <context>
@@ -254,97 +335,162 @@
     </message>
     <message>
         <location filename="../styleconfig.ui" line="132"/>
+        <source>Tooltip:</source>
+        <translation>ツールチップ:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="146"/>
         <source>Link:</source>
         <translation>リンク:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="152"/>
+        <location filename="../styleconfig.ui" line="166"/>
         <source>Window Text:</source>
         <translation>ウィンドウのテキスト:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="162"/>
+        <location filename="../styleconfig.ui" line="176"/>
         <source>View Text:</source>
         <translation>表示のテキスト:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="172"/>
+        <location filename="../styleconfig.ui" line="186"/>
         <source>Selected Text:</source>
         <translation>選択したテキスト:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="182"/>
+        <location filename="../styleconfig.ui" line="196"/>
+        <source>Tooltip Text:</source>
+        <translation>ツールチップのテキスト:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="210"/>
         <source>Visited Link:</source>
         <translation>閲覧済みリンク:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="227"/>
+        <location filename="../styleconfig.ui" line="242"/>
+        <source>&amp;Save Palette</source>
+        <translation>パレットを保存する(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="249"/>
+        <source>&amp;Load Palette</source>
+        <translation>パレットを読み込む(&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="269"/>
         <source>&amp;Default Palette</source>
         <translation>パレットを既定値にする(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="254"/>
-        <source>Set GTK themes (GTK configuration files will be overwritten!)</source>
-        <translation>GTK テーマの設定(GTK の設定ファイルが上書きされます！)</translation>
-    </message>
-    <message>
-        <location filename="../styleconfig.ui" line="274"/>
-        <source>GTK 3 Theme</source>
-        <translation>GTK3 テーマ</translation>
-    </message>
-    <message>
         <location filename="../styleconfig.ui" line="284"/>
-        <source>GTK 2 Theme</source>
-        <translation>GTK2 テーマ</translation>
-    </message>
-    <message>
         <location filename="../styleconfig.ui" line="294"/>
-        <source>To attempt uniform theming, either select similar style/theme (if available) across all lists, or select &apos;gtk2&apos; Qt style (if available) to mimic GTK themes.
-
-Make sure &apos;xsettingsd&apos; is installed to help GTK applications apply themes on the fly.</source>
-        <translation>テーマを統一するには、すべてのリストで類似のスタイルやテーマを(可能ならば)選択するか、GTK テーマを再現するために Qt スタイルで &apos;gtk2&apos; を(可能ならば)選択します。
-
-すぐに GTK アプリケーションのテーマに適用されるように、&apos;xsettingsd&apos; がインストールされていることを確認してください。</translation>
+        <location filename="../styleconfig.ui" line="326"/>
+        <location filename="../styleconfig.ui" line="336"/>
+        <location filename="../styleconfig.ui" line="368"/>
+        <source>May be overridden by Qt style or app</source>
+        <translation>Qt スタイルまたはアプリケーションによって上書きされる場合があります</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="311"/>
+        <location filename="../styleconfig.ui" line="287"/>
         <source>Toolbar button style:</source>
         <translation>ツールバーボタンのスタイル:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="319"/>
+        <location filename="../styleconfig.ui" line="298"/>
         <source>Only display the icon</source>
         <translation>アイコンのみを表示</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="324"/>
+        <location filename="../styleconfig.ui" line="303"/>
         <source>Only display the text</source>
         <translation>テキストのみを表示</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="329"/>
+        <location filename="../styleconfig.ui" line="308"/>
         <source>The text appears beside the icon</source>
         <translation>アイコンの横にテキスト</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="334"/>
+        <location filename="../styleconfig.ui" line="313"/>
         <source>The text appears under the icon</source>
         <translation>アイコンの下にテキスト</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="339"/>
+        <location filename="../styleconfig.ui" line="318"/>
         <source>Default</source>
-        <translation>デフォルト</translation>
+        <translation>既定値</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="347"/>
+        <location filename="../styleconfig.ui" line="329"/>
+        <source>Toolbar icon size:</source>
+        <translation>ツールバーアイコンのサイズ:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="340"/>
+        <source>16</source>
+        <translation>16</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="345"/>
+        <source>22</source>
+        <translation>22</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="350"/>
+        <source>24</source>
+        <translation>24</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="355"/>
+        <source>32</source>
+        <translation>32</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="360"/>
+        <source>48</source>
+        <translation>48</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="371"/>
         <source>Activate item on single click</source>
         <translation>シングルクリックでアイテムを有効にする</translation>
     </message>
     <message>
         <location filename="../styleconfig.ui" line="51"/>
-        <source>Qt Style</source>
-        <translation>Qt スタイル</translation>
+        <source>Qt Style:</source>
+        <translation>Qt スタイル:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="330"/>
+        <location filename="../styleconfig.cpp" line="340"/>
+        <source>Save Palette</source>
+        <translation>パレットの保存</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="330"/>
+        <source>Palette name:</source>
+        <translation>パレット名:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="341"/>
+        <source>A palette with the same name exists.
+Do you want to replace it?</source>
+        <translation>同じ名前のパレットが存在します。
+置き換えますか？</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="484"/>
+        <source>Remove Palettes</source>
+        <translation>パレットの削除</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="485"/>
+        <source>Do you really want to remove selected palette(s)?
+Root palettes will remain intact if existing.</source>
+        <translation>本当に選択したパレットを削除しますか？
+Root パレットが存在する場合、それは残ります。</translation>
     </message>
 </context>
 </TS>

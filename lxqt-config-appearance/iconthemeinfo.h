@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -33,7 +33,7 @@
 #include <QIcon>
 #include <QDir>
 #include <QSettings>
-#include <QVector>
+#include <QList>
 
 class IconThemeInfo
 {
@@ -47,7 +47,7 @@ public:
 
     bool isValid() const { return mValid; }
     bool isHidden() const { return mHidden; }
-    QVector<QIcon> icons(const QStringList &iconNames) const;
+    QList<QIcon> icons(const QStringList &iconNames) const;
 
 private:
     QString mFileName;

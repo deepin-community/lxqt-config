@@ -27,13 +27,8 @@
 #include <QStringBuilder>
 
 // FIXME: how to support XCB or Wayland?
-#include <QX11Info>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
-
-#ifdef Q_WS_X11
-extern void qt_x11_apply_settings_in_all_apps();
-#endif
 
 KeyboardConfig::KeyboardConfig(LXQt::Settings* _settings, QSettings* _qtSettings, QWidget* parent):
   QWidget(parent),
@@ -52,9 +47,12 @@ KeyboardConfig::KeyboardConfig(LXQt::Settings* _settings, QSettings* _qtSettings
 
   ui.setupUi(this);
 
-  /* read the config flie */
+  /* read the config file */
   loadSettings();
   initControls();
+
+  connect(ui.keyboardDelay, &QAbstractSlider::valueChanged, ui.label_delay, QOverload<int>::of(&QLabel::setNum));
+  connect(ui.keyboardInterval, &QAbstractSlider::valueChanged, ui.label_interval, QOverload<int>::of(&QLabel::setNum));
 
   // set_range_stops(ui.keyboardDelay, 10);
   connect(ui.keyboardDelay, &QAbstractSlider::valueChanged, this, &KeyboardConfig::settingsChanged);
@@ -89,14 +87,16 @@ void KeyboardConfig::initControls() {
 void KeyboardConfig::applyConfig()
 {
   bool acceptSetting = false;
-  bool applyX11 = false;
+
+    auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
+    Display* dpy = x11NativeInterface->display();
 
   /* apply keyboard values */
   if(delay != ui.keyboardDelay->value() || interval != ui.keyboardInterval->value())
   {
     delay = ui.keyboardDelay->value();
     interval = ui.keyboardInterval->value();
-    XkbSetAutoRepeatRate(QX11Info::display(), XkbUseCoreKbd, delay, interval);
+    XkbSetAutoRepeatRate(dpy, XkbUseCoreKbd, delay, interval);
     acceptSetting = true;
   }
 
@@ -105,14 +105,14 @@ void KeyboardConfig::applyConfig()
     beep = ui.keyboardBeep->isChecked();
     XKeyboardControl values;
     values.bell_percent = beep ? -1 : 0;
-    XChangeKeyboardControl(QX11Info::display(), KBBellPercent, &values);
+    XChangeKeyboardControl(dpy, KBBellPercent, &values);
     acceptSetting = true;
   }
 
   if(flashTime != ui.cursorFlashTime->value())
   {
     flashTime = ui.cursorFlashTime->value();
-    acceptSetting = applyX11 = true;
+    acceptSetting = true;
   }
 
   if(numlock != ui.keyboardNumLock->isChecked())
@@ -123,14 +123,6 @@ void KeyboardConfig::applyConfig()
 
   if(acceptSetting)
     accept();
-
-#ifdef Q_WS_X11
-  if(applyX11)
-  {
-    qtSettings->sync();
-    qt_x11_apply_settings_in_all_apps();
-  }
-#endif
 }
 
 void KeyboardConfig::loadSettings() {
@@ -167,7 +159,11 @@ void KeyboardConfig::reset() {
   beep = oldBeep;
   numlock = oldNumlock;
   flashTime = oldFlashTime;
-  XkbSetAutoRepeatRate(QX11Info::display(), XkbUseCoreKbd, delay, interval);
+  if(auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+    if(Display* dpy = x11NativeInterface->display()) {
+      XkbSetAutoRepeatRate(dpy, XkbUseCoreKbd, delay, interval);
+    }
+  }
   /* FIXME: beep? */
 
   initControls();

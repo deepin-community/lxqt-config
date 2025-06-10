@@ -1,6 +1,5 @@
 project(lxqt-config)
 add_subdirectory(qcategorizedview)
-add_subdirectory(menuname)
 
 include_directories (
     "${CMAKE_CURRENT_SOURCE_DIR}/qcategorizedview"
@@ -34,7 +33,7 @@ lxqt_translate_ts(QM_FILES
 )
 
 lxqt_app_translation_loader(QM_LOADER ${PROJECT_NAME})
-lxqt_translate_desktop(DESKTOP_FILES SOURCES lxqt-config.desktop.in)
+lxqt_translate_desktop(DESKTOP_FILES SOURCES lxqt-config.desktop.in USE_YAML)
 
 #************************************************
 
@@ -46,9 +45,8 @@ add_executable(lxqt-config
 )
 
 target_link_libraries(lxqt-config
-    KF5::WindowSystem
-    Qt5::Widgets
-    Qt5::Xml
+    Qt6::Widgets
+    Qt6::Xml
     lxqt
 )
 
@@ -66,7 +64,4 @@ install(FILES
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications"
     COMPONENT Runtime
 )
-install(FILES lxqt-config.menu
-    DESTINATION "${LXQT_ETC_XDG_DIR}/menus"
-    COMPONENT Runtime
-)
+

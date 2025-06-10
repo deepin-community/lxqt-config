@@ -6,17 +6,17 @@
     <message>
         <location filename="../selectwnd.ui" line="14"/>
         <source>LXQt Mouse Theme Configuration</source>
-        <translation>Konfiguration af LXQt-musemarkørtema</translation>
+        <translation>Indstilling af LXQt-musemarkørtema</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="46"/>
+        <location filename="../selectwnd.ui" line="20"/>
         <source>Select the cursor theme you want to use (hover preview to test cursor). &lt;b&gt;LXQt session needs restart after this change&lt;/b&gt;:</source>
-        <translation>Vælg det markørtema, du vil bruge (hold over forhåndsvisning for at teste markør). &lt;b&gt;LXQt-sessionen skal genstartes efter denne ændring&lt;/b&gt;:</translation>
+        <translation>Vælg det markørtema, du vil bruge (hold markør over forhåndsvisning for at teste tema). &lt;b&gt;LXQt-sessionen skal genstartes efter denne ændring&lt;/b&gt;:</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="23"/>
+        <location filename="../selectwnd.ui" line="104"/>
         <source>&amp;Install New Theme...</source>
-        <translation>&amp;Installer nyt tema...</translation>
+        <translation>&amp;Installér nyt tema...</translation>
     </message>
     <message>
         <location filename="../selectwnd.ui" line="72"/>
@@ -24,22 +24,22 @@
         <translation>LXQt-sessionen skal genstartes for at vise ændringen.</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="91"/>
+        <location filename="../selectwnd.ui" line="111"/>
         <source>&amp;Remove Theme</source>
         <translation>&amp;Fjern tema</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="111"/>
+        <location filename="../selectwnd.ui" line="65"/>
         <source>Size</source>
         <translation>Størrelse</translation>
     </message>
     <message>
-        <location filename="../selectwnd.cpp" line="233"/>
+        <location filename="../selectwnd.cpp" line="229"/>
         <source>XCurTheme error</source>
         <translation>Fejl ved XCurTheme</translation>
     </message>
     <message>
-        <location filename="../selectwnd.cpp" line="234"/>
+        <location filename="../selectwnd.cpp" line="230"/>
         <source>You can&apos;t remove active theme!</source>
         <translation>Det aktive tema kan ikke fjernes!</translation>
     </message>
@@ -65,12 +65,12 @@
 <context>
     <name>XCursorThemeModel</name>
     <message>
-        <location filename="../thememodel.cpp" line="61"/>
+        <location filename="../thememodel.cpp" line="62"/>
         <source>Name</source>
         <translation>Navn</translation>
     </message>
     <message>
-        <location filename="../thememodel.cpp" line="62"/>
+        <location filename="../thememodel.cpp" line="63"/>
         <source>Description</source>
         <translation>Beskrivelse</translation>
     </message>

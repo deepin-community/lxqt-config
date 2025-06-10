@@ -25,7 +25,7 @@ SelectKeyboardLayoutDialog::SelectKeyboardLayoutDialog(QMap< QString, KeyboardLa
   QDialog(parent),
   knownLayouts_(knownLayouts) {
   ui.setupUi(this);
-  connect(ui.layouts, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), SLOT(onLayoutChanged()));
+  connect(ui.layouts, &QListWidget::currentItemChanged, this, &SelectKeyboardLayoutDialog::onLayoutChanged);
 
   QMap<QString, KeyboardLayoutInfo >::const_iterator it;
   for(it = knownLayouts_.constBegin(); it != knownLayouts_.constEnd(); ++it) {
@@ -51,7 +51,7 @@ void SelectKeyboardLayoutDialog::onLayoutChanged() {
   if(item) { // add variants of this layout to the list view
     QString name = item->data(Qt::UserRole).toString();
     const KeyboardLayoutInfo& info = knownLayouts_[name];
-    for(const LayoutVariantInfo& vinfo : qAsConst(info.variants)) {
+    for(const LayoutVariantInfo& vinfo : std::as_const(info.variants)) {
       QListWidgetItem * vitem = new QListWidgetItem(vinfo.description);
       // qDebug() << "vitem" << vinfo.name << vinfo.description;
       vitem->setData(Qt::UserRole, vinfo.name);

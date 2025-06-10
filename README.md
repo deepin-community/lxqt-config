@@ -43,6 +43,7 @@ Configures hardware of pointer devices. Settings like repeat delay and interval
 of keyboards or acceleration of pointer devices.
 
 Binary `lxqt-config-input`.
+**Note**: Not supported currently under wayland.
 
 #### Locale
 
@@ -53,11 +54,15 @@ belonging to LXQt, too.
 
 Binary `lxqt-config-locale`.
 
+**Note**: The SVG ISO flags from `$XDG_DATA_DIRS/iso-flags-svg/country-4x3/` will be shown if `iso-flags-svg` is installed (whether as root or inside `~/.local/share/`).
+
 #### Monitor Settings
 
 Adjusts screen resolutions, positioning of screens and the likes.
 
 Binary `lxqt-config-monitor`.
+
+**Note**: Not supported currently under wlroots based compositors.
 
 ### Configuration Center
 
@@ -76,17 +81,15 @@ Third-party applications can include their configuration tools in
 "Configuration Center", too. This applies e. g. to "Connman UI Setup" of
 [cmst](https://github.com/andrew-bibb/cmst) or "SDDM Configuration" of
 [sddm-config-editor](https://github.com/hagabaka/sddm-config-editor).
+Other kinds of settings are shown under "Other Settings".
 
 ## Installation
 
 ### Compiling source code
 
-Runtime dependencies are Xcursor, qtsvg, KScreen and
+Runtime dependencies are Xcursor, qtsvg, KScreen, [lxqt-menu-data](https://github.com/lxqt/lxqt-menu-data/) and
 [liblxqt](https://github.com/lxqt/liblxqt).  Additional build dependencies are
-CMake and optionally Git to pull latest VCS checkouts. The localization files
-were outsourced to repository [lxqt-l10n](https://github.com/lxqt/lxqt-l10n) so
-the corresponding dependencies are needed, too. Please refer to this repository's
-`README.md` for further information.
+CMake and optionally Git to pull latest VCS checkouts.
 
 Code configuration is handled by CMake. CMake variable `CMAKE_INSTALL_PREFIX`
 has to be set to `/usr` on most operating systems, depending on the way library
@@ -98,9 +101,8 @@ as usual.
 
 ### Binary packages
 
-The library is provided by all major Linux distributions like Arch Linux, Debian
-(as of Debian stretch only), Fedora and openSUSE. Just use your package manager
-to search for string `lxqt-config`.
+The library is provided by all major Linux and BSD distributions.
+Just use your package manager to search for string `lxqt-config`.
 
 ## Usage
 
@@ -108,9 +110,7 @@ Both the various configuration tools and the Configuration Center can be launche
 from the panel's main menu - Preferences - LXQt settings. Obviously the former
 can be launched from the latter, too.
 
-
-
-###Translations
+### Translations
 
 Translations can be done in [LXQt-Weblate](https://translate.lxqt-project.org/projects/lxqt-configuration/lxqt-config/)
 

@@ -4,92 +4,97 @@
 <context>
     <name>LocaleConfig</name>
     <message>
-        <location filename="../localeconfig.ui" line="47"/>
+        <location filename="../localeconfig.ui" line="31"/>
         <source>Re&amp;gion:</source>
         <translation>Re&amp;gione:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="76"/>
+        <location filename="../localeconfig.ui" line="60"/>
         <source>De&amp;tailed Settings</source>
         <translation>Impos&amp;tazioni dettagliate</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="83"/>
+        <location filename="../localeconfig.ui" line="78"/>
         <source>&amp;Numbers:</source>
         <translation>&amp;Numeri:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="112"/>
+        <location filename="../localeconfig.ui" line="107"/>
         <source>&amp;Time:</source>
         <translation>&amp;Ora:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="141"/>
+        <location filename="../localeconfig.ui" line="136"/>
         <source>Currenc&amp;y:</source>
         <translation>&amp;Valuta:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="170"/>
+        <location filename="../localeconfig.ui" line="165"/>
         <source>Measurement &amp;Units:</source>
         <translation>&amp;Unità di misura:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="199"/>
+        <location filename="../localeconfig.ui" line="194"/>
         <source>Co&amp;llation and Sorting:</source>
         <translation>Ordi&amp;namento:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="238"/>
-        <source>&lt;b&gt;Examples&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Esempi&lt;/b&gt;</translation>
+        <location filename="../localeconfig.ui" line="226"/>
+        <source>Examples</source>
+        <translation>Esempi</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="248"/>
+        <location filename="../localeconfig.ui" line="238"/>
         <source>Numbers:</source>
         <translation>Numeri:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="268"/>
+        <location filename="../localeconfig.ui" line="258"/>
         <source>Time:</source>
         <translation>Ora:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="288"/>
+        <location filename="../localeconfig.ui" line="289"/>
         <source>Currency:</source>
         <translation>Valuta:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.ui" line="308"/>
+        <location filename="../localeconfig.ui" line="309"/>
         <source>Measurement Units:</source>
         <translation>Unità di misura:</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="127"/>
-        <source>No change</source>
-        <translation>Nessuna modifica</translation>
+        <location filename="../localeconfig.cpp" line="164"/>
+        <source>Unset</source>
+        <translation>Non impostato</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="316"/>
+        <location filename="../localeconfig.cpp" line="226"/>
+        <source>Current: </source>
+        <translation>Attuale: </translation>
+    </message>
+    <message>
+        <location filename="../localeconfig.cpp" line="370"/>
         <source>Format Settings Changed</source>
         <translation>Impostazioni di formato cambiate</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="317"/>
+        <location filename="../localeconfig.cpp" line="371"/>
         <source>Do you want to save your changes? They will take effect the next time you log in.</source>
         <translation>Salvare le modifiche? Saranno applicate al prossimo login.</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="438"/>
+        <location filename="../localeconfig.cpp" line="518"/>
         <source>Imperial UK</source>
         <translation>Imperiale GB</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="442"/>
+        <location filename="../localeconfig.cpp" line="522"/>
         <source>Imperial US</source>
         <translation>Imperiale USA</translation>
     </message>
     <message>
-        <location filename="../localeconfig.cpp" line="446"/>
+        <location filename="../localeconfig.cpp" line="526"/>
         <source>Metric</source>
         <translation>Metrico</translation>
     </message>
@@ -97,12 +102,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="50"/>
+        <location filename="../main.cpp" line="49"/>
         <source>LXQt Locale Configuration</source>
         <translation>Configurazione della lingua e del paese di LXQt</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="55"/>
+        <location filename="../main.cpp" line="54"/>
         <source>Locale Settings</source>
         <translation>Impostazioni di localizzazione</translation>
     </message>

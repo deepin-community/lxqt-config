@@ -28,6 +28,7 @@
 #include "kscreenutils.h"
 
 #include <KScreen/Output>
+#include <KScreen/Mode>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <LXQt/Settings>
@@ -55,7 +56,15 @@ MonitorSettingsDialog::MonitorSettingsDialog() :
             operation->deleteLater();
         }
         else if(configOp && !configOp->config()) {
-            qDebug() << "Error: Config is invalid, probably backend couldn't load";
+            // Show info under wlroots based compositors
+            if (QGuiApplication::platformName() == QLatin1String("wayland")) {
+                QMessageBox::warning(this,
+                                     tr("Platform Unsupported"),
+                                     tr("LXQt monitor settings are currently unsupported under this wayland compositor.\n\nYou can configure your monitor(s) with kanshi."));
+            }
+            else {
+                qDebug() << "Error: Config is invalid, probably backend couldn't load";
+            }
             exit(1);
         }
         else if(configOp && configOp->config() && !configOp->config()->screen()) {
@@ -77,7 +86,11 @@ MonitorSettingsDialog::MonitorSettingsDialog() :
 
     });
 
-    connect(ui.settingsButton, SIGNAL(clicked()), this, SLOT(showSettingsDialog()));
+    connect(ui.settingsButton, &QToolButton::clicked, this, &MonitorSettingsDialog::showSettingsDialog);
+
+    // also make sure that widgets are shown completely (a Qt bug under Wayland?)
+    LXQt::Settings settings(QStringLiteral("lxqt-config-monitor"));
+    resize(sizeHint().expandedTo(settings.value(QStringLiteral("size")).toSize().expandedTo(QSize(600, 400))));
 }
 
 MonitorSettingsDialog::~MonitorSettingsDialog()
@@ -126,10 +139,10 @@ void MonitorSettingsDialog::loadConfiguration(KScreen::ConfigPtr config)
         }
     }
 
-    for(const MonitorWidget *monitor1 : qAsConst(monitors)) {
-        for(const MonitorWidget *monitor : qAsConst(monitors)) {
+    for(const MonitorWidget *monitor1 : std::as_const(monitors)) {
+        for(const MonitorWidget *monitor : std::as_const(monitors)) {
             if(monitor != monitor1)
-                connect(monitor, SIGNAL(primaryOutputChanged(MonitorWidget *)), monitor1, SLOT(onPrimaryOutputChanged(MonitorWidget *)));
+                connect(monitor, &MonitorWidget::primaryOutputChanged, monitor1, &MonitorWidget::onPrimaryOutputChanged);
         }
     }
 
@@ -137,7 +150,6 @@ void MonitorSettingsDialog::loadConfiguration(KScreen::ConfigPtr config)
         monitorPicture->setScene(monitors);
 
     ui.monitorList->setCurrentRow(0);
-    adjustSize();
 }
 
 void MonitorSettingsDialog::applyConfiguration(bool saveConfigOk)
@@ -151,12 +163,13 @@ void MonitorSettingsDialog::applyConfiguration(bool saveConfigOk)
 
 void MonitorSettingsDialog::accept()
 {
-    //applyConfiguration(true);
+    saveSize();
     QDialog::accept();
 }
 
 void MonitorSettingsDialog::reject()
 {
+    saveSize();
     QDialog::reject();
 }
 
@@ -227,4 +240,10 @@ void MonitorSettingsDialog::showSettingsDialog()
 
     SettingsDialog settingsDialog(tr("Advanced settings"), &settings, mConfig);
     settingsDialog.exec();
+}
+
+void MonitorSettingsDialog::saveSize()
+{
+    LXQt::Settings settings(QStringLiteral("lxqt-config-monitor"));
+    settings.setValue(QStringLiteral("size"), size());
 }

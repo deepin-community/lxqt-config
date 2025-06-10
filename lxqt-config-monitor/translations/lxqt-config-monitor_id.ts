@@ -33,7 +33,23 @@
     <name>LoadSettings</name>
     <message>
         <location filename="../loadsettings.cpp" line="97"/>
-        <source>Default monitor settings has been applied. If you want change monitors settings, please, use lxqt-config-monitor.</source>
+        <source>Default monitor settings applied.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loadsettings.cpp" line="98"/>
+        <source>Adjust your screens with LXQt Monitor Settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loadsettings.cpp" line="107"/>
+        <source>lxqt-config-monitor: Settings applied.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../loadsettings.cpp" line="109"/>
+        <source>lxqt-config-monitor: Settings not applied.
+If this is a Wayland compositor, you could try kanshi to configure your monitor(s).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -50,61 +66,70 @@
         <translation>Pengaturan tersimpan</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.ui" line="38"/>
+        <location filename="../managesavedsettings.ui" line="45"/>
         <source>Rename</source>
         <translation>Ubah nama</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.ui" line="45"/>
+        <location filename="../managesavedsettings.ui" line="52"/>
         <source>Delete</source>
         <translation>Hapus</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.ui" line="52"/>
-        <source>Apply</source>
-        <translation>Terapkan</translation>
-    </message>
-    <message>
-        <location filename="../managesavedsettings.cpp" line="62"/>
+        <location filename="../managesavedsettings.cpp" line="66"/>
         <source>None</source>
         <translation>Tidak ada</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="65"/>
+        <location filename="../managesavedsettings.cpp" line="69"/>
         <source>Left</source>
         <translation>Kiri</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="68"/>
+        <location filename="../managesavedsettings.cpp" line="72"/>
         <source>Inverted</source>
         <translation>Terbalik</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="71"/>
+        <location filename="../managesavedsettings.cpp" line="75"/>
         <source>Right</source>
         <translation>Kanan</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="75"/>
-        <location filename="../managesavedsettings.cpp" line="76"/>
+        <location filename="../managesavedsettings.cpp" line="79"/>
+        <location filename="../managesavedsettings.cpp" line="80"/>
         <source>True</source>
         <translation>Benar</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="75"/>
-        <location filename="../managesavedsettings.cpp" line="76"/>
+        <location filename="../managesavedsettings.cpp" line="79"/>
+        <location filename="../managesavedsettings.cpp" line="80"/>
         <source>False</source>
         <translation>Salah</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="136"/>
+        <location filename="../managesavedsettings.cpp" line="139"/>
         <source>Name</source>
         <translation>Nama</translation>
     </message>
     <message>
-        <location filename="../managesavedsettings.cpp" line="136"/>
+        <location filename="../managesavedsettings.cpp" line="139"/>
         <source>Name:</source>
         <translation>Nama:</translation>
+    </message>
+    <message>
+        <location filename="../managesavedsettings.cpp" line="172"/>
+        <source>Settings Activation Failed</source>
+        <translation>Pengaturan Aktivasi Gagal</translation>
+    </message>
+    <message>
+        <location filename="../managesavedsettings.cpp" line="173"/>
+        <source>Selected settings cannot be applied with currently active monitors.
+
+Please choose from the highlighted configurations.</source>
+        <translation>Penganturan yang dipilih tidak dapat diterapkan karena layar yang aktif saat ini.
+
+Silahkan pilih dari konfigurasi yang ditandai.</translation>
     </message>
 </context>
 <context>
@@ -128,17 +153,31 @@
         <translation>Pengaturan</translation>
     </message>
     <message>
-        <location filename="../monitorsettingsdialog.cpp" line="105"/>
+        <location filename="../monitorsettingsdialog.cpp" line="62"/>
+        <source>Platform Unsupported</source>
+        <translation>Kerangka Kerja tidak didukung</translation>
+    </message>
+    <message>
+        <location filename="../monitorsettingsdialog.cpp" line="63"/>
+        <source>LXQt monitor settings are currently unsupported under this wayland compositor.
+
+You can configure your monitor(s) with kanshi.</source>
+        <translation>Pengaturan layar LXQt saat ini tidak didukung di kompositor wayland ini.
+
+Anda dapat mengonfigurasi layar anda dengan kanshi.</translation>
+    </message>
+    <message>
+        <location filename="../monitorsettingsdialog.cpp" line="118"/>
         <source>Fast Menu</source>
         <translation>Menu Cepat</translation>
     </message>
     <message>
-        <location filename="../monitorsettingsdialog.cpp" line="109"/>
+        <location filename="../monitorsettingsdialog.cpp" line="122"/>
         <source>Set position</source>
         <translation>Atur posisi</translation>
     </message>
     <message>
-        <location filename="../monitorsettingsdialog.cpp" line="228"/>
+        <location filename="../monitorsettingsdialog.cpp" line="241"/>
         <source>Advanced settings</source>
         <translation>Pengaturan Lanjutan</translation>
     </message>
@@ -151,32 +190,32 @@
         <translation>Penyiapan</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="29"/>
+        <location filename="../monitorwidget.ui" line="64"/>
         <source> (x)</source>
         <translation> (x)</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="45"/>
+        <location filename="../monitorwidget.ui" line="80"/>
         <source> (y)</source>
         <translation> (y)</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="78"/>
+        <location filename="../monitorwidget.ui" line="36"/>
         <source>Resolution:</source>
         <translation>Resolusi:</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="90"/>
+        <location filename="../monitorwidget.ui" line="27"/>
         <source>Enable this display</source>
         <translation>Aktifkan layar ini</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="98"/>
+        <location filename="../monitorwidget.ui" line="49"/>
         <source>This is my primary display</source>
         <translation>Ini adalah layar utama saya</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="103"/>
+        <location filename="../monitorwidget.ui" line="54"/>
         <source>This screen extends another display</source>
         <translation>Layar ini perluasan dari layar lain</translation>
     </message>
@@ -186,12 +225,12 @@
         <translation>Lanjutan</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="146"/>
+        <location filename="../monitorwidget.ui" line="143"/>
         <source>Refresh rate:</source>
         <translation>Refresh rate:</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.ui" line="153"/>
+        <location filename="../monitorwidget.ui" line="133"/>
         <source>Rotation:</source>
         <translation>Rotasi:</translation>
     </message>
@@ -206,69 +245,69 @@
         <translation>Informasi layar</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="128"/>
+        <location filename="../monitorwidget.cpp" line="129"/>
         <source>Name: %1
 </source>
         <translation>Nama: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="129"/>
+        <location filename="../monitorwidget.cpp" line="130"/>
         <source>Vendor: %1
 </source>
         <translation>Vendor: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="130"/>
+        <location filename="../monitorwidget.cpp" line="131"/>
         <source>Serial: %1
 </source>
         <translation>Seri: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="131"/>
+        <location filename="../monitorwidget.cpp" line="132"/>
         <source>Display size: %1cm x %2cm
 </source>
         <translation>Ukuran layar: %1cm x %2cm
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="132"/>
+        <location filename="../monitorwidget.cpp" line="133"/>
         <source>Serial number: %1
 </source>
         <translation>Nomor seri: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="133"/>
+        <location filename="../monitorwidget.cpp" line="134"/>
         <source>EISA device ID: %1
 </source>
         <translation>ID perangkat EISA: %1
 </translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="153"/>
+        <location filename="../monitorwidget.cpp" line="155"/>
         <source>None</source>
         <translation>Tidak ada</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="154"/>
+        <location filename="../monitorwidget.cpp" line="156"/>
         <source>Left</source>
         <translation>Kiri</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="155"/>
+        <location filename="../monitorwidget.cpp" line="157"/>
         <source>Right</source>
         <translation>Kanan</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="156"/>
+        <location filename="../monitorwidget.cpp" line="158"/>
         <source>Inverted</source>
         <translation>Terbalik</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="244"/>
+        <location filename="../monitorwidget.cpp" line="248"/>
         <source>%1 Hz</source>
         <translation>%1 Hz</translation>
     </message>

@@ -36,8 +36,9 @@
 #include <QTextStream>
 #include <QProcess>
 
-#include <QX11Info>
 #include <X11/Xcursor/Xcursor.h>
+
+#include <QGuiApplication>
 
 const QString HOME_ICON_DIR(QDir::homePath() + QStringLiteral("/.icons"));
 
@@ -48,7 +49,7 @@ SelectWnd::SelectWnd(LXQt::Settings* settings, QWidget *parent)
 {
     ui->setupUi(this);
     ui->warningLabel->hide();
-    ui->preview->setCurrentCursorSize(XcursorGetDefaultSize(QX11Info::display()));
+    ui->preview->setCurrentCursorSize(getDefaultCursorSize());
     ui->preview->setCursorSize(ui->preview->getCurrentCursorSize());
 
     mModel = new XCursorThemeModel(this);
@@ -62,21 +63,17 @@ SelectWnd::SelectWnd(LXQt::Settings* settings, QWidget *parent)
     // Make sure we find out about selection changes
     connect(ui->lbThemes->selectionModel(), &QItemSelectionModel::currentChanged, this, &SelectWnd::currentChanged);
     // display/hide warning label
-    connect(mModel, SIGNAL(modelReset()),
-                    this, SLOT(handleWarning()));
-    connect(mModel, SIGNAL(rowsInserted(const QModelIndex&, int, int)),
-                    this, SLOT(handleWarning()));
-    connect(mModel, SIGNAL(rowsRemoved(const QModelIndex&, int, int)),
-                    this, SLOT(handleWarning()));
+    connect(mModel, &XCursorThemeModel::modelReset, this, &SelectWnd::handleWarning);
+    connect(mModel, &XCursorThemeModel::rowsInserted, this, &SelectWnd::handleWarning);
+    connect(mModel, &XCursorThemeModel::rowsRemoved, this, &SelectWnd::handleWarning);
 
-    connect(ui->warningLabel, SIGNAL(showDirInfo()),
-                    this, SLOT(showDirInfo()));
-    
+    connect(ui->warningLabel, &WarningLabel::showDirInfo, this, &SelectWnd::showDirInfo);
+
     // Set actual cursor size
-    ui->cursorSizeSpinBox->setValue(XcursorGetDefaultSize(QX11Info::display()));
-    
-    connect(ui->cursorSizeSpinBox, SIGNAL(	valueChanged(int)),
-                    this, SLOT(cursorSizeChaged(int)));
+    ui->cursorSizeSpinBox->setValue(getDefaultCursorSize());
+
+
+    connect(ui->cursorSizeSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, &SelectWnd::cursorSizeChanged);
 
     // Disable the install button if we can't install new themes to ~/.icons,
     // or Xcursor isn't set up to look for cursor themes there
@@ -170,23 +167,22 @@ void SelectWnd::applyCusorTheme()
     QModelIndex curIndex = ui->lbThemes->currentIndex();
     if(!curIndex.isValid()) return;
     const XCursorThemeData *theme = mModel->theme(curIndex);
-    
-    if(!theme ||
-        (
-            mSettings->value(QStringLiteral("Mouse/cursor_theme")) == theme->name()
-            && mSettings->value(QStringLiteral("Mouse/cursor_size")) == ui->cursorSizeSpinBox->value()
-        )
-    ) {
+
+    if(!theme)
+    {
+        // WARNING: This block should not return if the values in "session.conf" are equal to what
+        // the user wants to set because that file may not reflect the values in "~/.Xresources"
+        // (which may have been edited in some way).
         return;
     }
-    
-    applyTheme(*theme, ui->cursorSizeSpinBox->value());
-    fixXDefaults(theme->name(), ui->cursorSizeSpinBox->value());
 
-    // call xrdb to merge the new settings in ~/.Xdefaults
+    applyTheme(*theme, ui->cursorSizeSpinBox->value());
+    setXcursor(theme->name(), ui->cursorSizeSpinBox->value());
+
+    // call xrdb to merge the new settings in ~/.Xresources
     // FIXME: need to check if we're running in X?
     QProcess xrdb;
-    xrdb.start(QStringLiteral("xrdb -merge ") + QDir::home().path() + QStringLiteral("/.Xdefaults"));
+    xrdb.start(QStringLiteral("xrdb"), QStringList() << QStringLiteral("-merge") << QDir::home().path() + QStringLiteral("/.Xresources"));
     xrdb.waitForFinished();
 
     // old razor-qt and lxqt versions use $XCURSOR_THEME environment variable
@@ -253,7 +249,7 @@ void SelectWnd::showDirInfo()
     QToolTip::showText(mapToGlobal(ui->warningLabel->buttonPos()), mModel->searchPaths().join(QStringLiteral("\n")));
 }
 
-void SelectWnd::cursorSizeChaged(int size)
+void SelectWnd::cursorSizeChanged(int size)
 {
     ui->preview->setCursorSize(size);
     emit settingsChanged();

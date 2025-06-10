@@ -28,13 +28,8 @@
 #include <QDebug>
 
 // FIXME: how to support XCB or Wayland?
-#include <QX11Info>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
-
-#ifdef Q_WS_X11
-extern void qt_x11_apply_settings_in_all_apps();
-#endif
 
 MouseConfig::MouseConfig(LXQt::Settings* _settings, QSettings* _qtSettings, QWidget* parent):
   QWidget(parent),
@@ -55,7 +50,7 @@ MouseConfig::MouseConfig(LXQt::Settings* _settings, QSettings* _qtSettings, QWid
 
   ui.setupUi(this);
 
-  /* read the config flie */
+  /* read the config file */
   loadSettings();
   initControls();
 
@@ -94,7 +89,18 @@ void MouseConfig::setLeftHandedMouse() {
   if(!buttons) {
     return;
   }
-  n_buttons = XGetPointerMapping(QX11Info::display(), buttons, DEFAULT_PTR_MAP_SIZE);
+  auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
+  if(!x11NativeInterface) {
+    free(buttons);
+    return;
+  }
+  Display* dpy = x11NativeInterface->display();
+  if(!dpy) {
+    free(buttons);
+    return;
+  }
+
+  n_buttons = XGetPointerMapping(dpy, buttons, DEFAULT_PTR_MAP_SIZE);
 
   if(n_buttons > DEFAULT_PTR_MAP_SIZE) {
     more_buttons = (unsigned char*)realloc(buttons, n_buttons);
@@ -103,7 +109,7 @@ void MouseConfig::setLeftHandedMouse() {
       return;
     }
     buttons = more_buttons;
-    n_buttons = XGetPointerMapping(QX11Info::display(), buttons, n_buttons);
+    n_buttons = XGetPointerMapping(dpy, buttons, n_buttons);
   }
 
   for(i = 0; i < n_buttons; i++) {
@@ -117,7 +123,7 @@ void MouseConfig::setLeftHandedMouse() {
       (!leftHanded && idx_1 > idx_3)) {
     buttons[idx_1] = ((n_buttons < 3) ? 2 : 3);
     buttons[idx_3] = 1;
-    XSetPointerMapping(QX11Info::display(), buttons, n_buttons);
+    XSetPointerMapping(dpy, buttons, n_buttons);
   }
   free(buttons);
 }
@@ -125,7 +131,6 @@ void MouseConfig::setLeftHandedMouse() {
 void MouseConfig::applyConfig()
 {
   bool acceptSetting = false;
-  bool applyX11 = false;
 
   if(leftHanded != ui.mouseLeftHanded->isChecked())
   {
@@ -137,31 +142,23 @@ void MouseConfig::applyConfig()
   if(doubleClickInterval != ui.doubleClickInterval->value())
   {
     doubleClickInterval = ui.doubleClickInterval->value();
-    acceptSetting = applyX11 = true;
+    acceptSetting = true;
   }
 
   if(wheelScrollLines != ui.wheelScrollLines->value())
   {
     wheelScrollLines = ui.wheelScrollLines->value();
-    acceptSetting = applyX11 = true;
+    acceptSetting = true;
   }
 
   if(singleClick != ui.singleClick->isChecked())
   {
     singleClick = ui.singleClick->isChecked();
-    acceptSetting = applyX11 = true;
+    acceptSetting = true;
   }
 
   if(acceptSetting)
     accept();
-
-#ifdef Q_WS_X11
-  if(applyX11)
-  {
-    qtSettings->sync();
-    qt_x11_apply_settings_in_all_apps();
-  }
-#endif
 }
 
 void MouseConfig::loadSettings() {
@@ -203,8 +200,12 @@ void MouseConfig::reset() {
   singleClick = oldSingleClick;
   doubleClickInterval = oldDoubleClickInterval;
   wheelScrollLines = oldWheelScrollLines;
-  XChangePointerControl(QX11Info::display(), True, True,
-                        accel, 10, threshold);
+  if(auto x11NativeInterface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+    if(Display* dpy = x11NativeInterface->display()) {
+      XChangePointerControl(dpy, True, True,
+                            accel, 10, threshold);
+    }
+  }
   setLeftHandedMouse();
 
   initControls();

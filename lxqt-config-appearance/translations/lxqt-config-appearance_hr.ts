@@ -5,8 +5,8 @@
     <name>ColorLabel</name>
     <message>
         <location filename="../colorLabel.cpp" line="37"/>
-        <source>Click to change color.</source>
-        <translation>Pritisni za mijenjanje boje.</translation>
+        <source>Click to change color</source>
+        <translation>Pritisni za mijenjanje boje</translation>
     </message>
     <message>
         <location filename="../colorLabel.cpp" line="61"/>
@@ -17,14 +17,24 @@
 <context>
     <name>ConfigOtherToolKits</name>
     <message>
-        <location filename="../configothertoolkits.cpp" line="148"/>
+        <location filename="../configothertoolkits.cpp" line="178"/>
         <source>GTK themes</source>
         <translation>GTK teme</translation>
     </message>
     <message>
-        <location filename="../configothertoolkits.cpp" line="149"/>
+        <location filename="../configothertoolkits.cpp" line="179"/>
         <source>&lt;p&gt;&apos;%1&apos; has been overwritten.&lt;/p&gt;&lt;p&gt;You can find a copy of your old settings in &apos;%2&apos;&lt;/p&gt;</source>
         <translation>&lt;p&gt;„%1” je prepisano.&lt;/p&gt;&lt;p&gt;Kopija prijašnjih postavki nalazi se u „%2”&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../configothertoolkits.cpp" line="244"/>
+        <source>Error</source>
+        <translation>Greška</translation>
+    </message>
+    <message>
+        <location filename="../configothertoolkits.cpp" line="244"/>
+        <source>Error: gsettings cannot be run</source>
+        <translation>Greška: gsettings se ne može pokrenuti</translation>
     </message>
 </context>
 <context>
@@ -50,27 +60,27 @@
         <translation>Stil:</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="53"/>
+        <location filename="../fontsconfig.ui" line="77"/>
         <source>Point size:</source>
         <translation>Veličina u tipografskim točkama:</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="68"/>
+        <location filename="../fontsconfig.ui" line="54"/>
         <source>Normal</source>
         <translation>Normalni</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="73"/>
+        <location filename="../fontsconfig.ui" line="59"/>
         <source>Bold</source>
         <translation>Debeli</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="78"/>
+        <location filename="../fontsconfig.ui" line="64"/>
         <source>Italic</source>
         <translation>Kurziv</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="83"/>
+        <location filename="../fontsconfig.ui" line="69"/>
         <source>Bold Italic</source>
         <translation>Debeli kurziv</translation>
     </message>
@@ -85,70 +95,102 @@
         <translation>Koristi zaglađivanje rubova fontova</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="107"/>
+        <location filename="../fontsconfig.ui" line="153"/>
         <source>Font hinting style:</source>
         <translation>Stil kontrola za iscrtavanje fontova:</translation>
     </message>
     <message>
         <location filename="../fontsconfig.ui" line="118"/>
-        <location filename="../fontsconfig.ui" line="183"/>
+        <location filename="../fontsconfig.ui" line="164"/>
         <source>None</source>
         <translation>Bez</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="123"/>
+        <location filename="../fontsconfig.ui" line="169"/>
         <source>Slight</source>
         <translation>Malo</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="128"/>
+        <location filename="../fontsconfig.ui" line="174"/>
         <source>Medium</source>
         <translation>Srednje</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="133"/>
+        <location filename="../fontsconfig.ui" line="179"/>
         <source>Full</source>
         <translation>Potpuno</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="141"/>
+        <location filename="../fontsconfig.ui" line="146"/>
         <source>Font hinting</source>
         <translation>Kontrole za iscrtavanje fontova</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="148"/>
+        <location filename="../fontsconfig.ui" line="187"/>
         <source>Resolution (DPI):</source>
         <translation>Razlučivost (DPI):</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="155"/>
+        <location filename="../fontsconfig.ui" line="204"/>
         <source>Autohint</source>
         <translation>Automatske kontrole za iscrtavanje fontova</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="172"/>
+        <location filename="../fontsconfig.ui" line="107"/>
         <source>Subpixel antialiasing:</source>
         <translation>Zaglađivanje rubova podpikselima:</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="188"/>
+        <location filename="../fontsconfig.ui" line="123"/>
         <source>RGB</source>
         <translation>RGB</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="193"/>
+        <location filename="../fontsconfig.ui" line="128"/>
         <source>BGR</source>
         <translation>BGR</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="198"/>
+        <location filename="../fontsconfig.ui" line="133"/>
         <source>VRGB</source>
         <translation>VRGB</translation>
     </message>
     <message>
-        <location filename="../fontsconfig.ui" line="203"/>
+        <location filename="../fontsconfig.ui" line="138"/>
         <source>VBGR</source>
         <translation>VBGR</translation>
+    </message>
+</context>
+<context>
+    <name>GTKConfig</name>
+    <message>
+        <location filename="../gtkconfig.ui" line="44"/>
+        <source>GTK Style</source>
+        <translation>GTK stil</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="63"/>
+        <source>Set GTK themes (GTK configuration files will be overwritten!)</source>
+        <translation>Postavi GTK teme (datoteke GTK konfiguracije će se prepisati!)</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="93"/>
+        <source>GTK 3 Theme:</source>
+        <translation>GTK 3 tema:</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="77"/>
+        <source>GTK 2 Theme:</source>
+        <translation>GTK 2 tema:</translation>
+    </message>
+    <message>
+        <location filename="../gtkconfig.ui" line="105"/>
+        <source>To attempt uniform theming, either select similar style/theme (if available) across all lists, or select &apos;gtk2&apos; Qt style (if available) to mimic GTK themes.
+
+Make sure &apos;xsettingsd&apos; is installed to help GTK applications apply themes on the fly.</source>
+        <translation>Za jednoliku upotrebu tema, odaberi sličan stil/temu (ako su dostupni) na svim popisima ili odaberi Qt stil „gtk2” (ako je dostupan) za oponašanje GTK teme.
+
+Uvjeri se da je „xsettingsd” instaliran, koji GTK programima pomaže trenutno primijeniti teme.</translation>
     </message>
 </context>
 <context>
@@ -183,41 +225,80 @@
     </message>
     <message>
         <location filename="../lxqtthemeconfig.ui" line="57"/>
-        <source>Override user-defined wallpaper</source>
-        <translation>Nadjačaj korisničku sliku pozadine</translation>
+        <source>Use wallpaper provided by theme</source>
+        <translation>Koristi sliku pozadine koju pruža tema</translation>
+    </message>
+    <message>
+        <location filename="../lxqtthemeconfig.ui" line="64"/>
+        <source>Use palette provided by theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../lxqtthemeconfig.cpp" line="83"/>
+        <source>(User Theme)</source>
+        <translation>(Korisnička tema)</translation>
+    </message>
+    <message>
+        <location filename="../lxqtthemeconfig.cpp" line="185"/>
+        <source>Open theme folder</source>
+        <translation>Otvori mapu tema</translation>
+    </message>
+</context>
+<context>
+    <name>PalettesDialog</name>
+    <message>
+        <location filename="../palettes.ui" line="14"/>
+        <location filename="../palettes.ui" line="20"/>
+        <source>Palettes</source>
+        <translation>Palete</translation>
+    </message>
+    <message>
+        <location filename="../palettes.ui" line="33"/>
+        <source>Filter...</source>
+        <translation>Filtriraj …</translation>
+    </message>
+    <message>
+        <location filename="../palettes.ui" line="43"/>
+        <source>&amp;Remove</source>
+        <translation>&amp;Ukloni</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="58"/>
+        <location filename="../main.cpp" line="61"/>
         <source>LXQt Appearance Configuration</source>
         <translation>LXQt konfiguracija izgleda</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="71"/>
+        <location filename="../main.cpp" line="74"/>
         <source>Widget Style</source>
         <translation>Stil programčića</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="79"/>
+        <location filename="../main.cpp" line="83"/>
         <source>Icons Theme</source>
         <translation>Tema ikona</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="88"/>
+        <location filename="../main.cpp" line="92"/>
         <source>LXQt Theme</source>
         <translation>LXQt teme</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="96"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Font</source>
         <translation>Font</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="106"/>
+        <location filename="../main.cpp" line="110"/>
         <source>Cursor</source>
         <translation>Pokazivač</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="117"/>
+        <source>GTK Style</source>
+        <translation>GTK stil</translation>
     </message>
 </context>
 <context>
@@ -254,97 +335,162 @@
     </message>
     <message>
         <location filename="../styleconfig.ui" line="132"/>
+        <source>Tooltip:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="146"/>
         <source>Link:</source>
         <translation>Poveznica:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="152"/>
+        <location filename="../styleconfig.ui" line="166"/>
         <source>Window Text:</source>
         <translation>Tekst prozora:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="162"/>
+        <location filename="../styleconfig.ui" line="176"/>
         <source>View Text:</source>
         <translation>Tekst prikaza:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="172"/>
+        <location filename="../styleconfig.ui" line="186"/>
         <source>Selected Text:</source>
         <translation>Odabrani tekst:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="182"/>
+        <location filename="../styleconfig.ui" line="196"/>
+        <source>Tooltip Text:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="210"/>
         <source>Visited Link:</source>
         <translation>Posjećena poveznica:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="227"/>
+        <location filename="../styleconfig.ui" line="242"/>
+        <source>&amp;Save Palette</source>
+        <translation>&amp;Spremi palete</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="249"/>
+        <source>&amp;Load Palette</source>
+        <translation>&amp;Učitaj palete</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="269"/>
         <source>&amp;Default Palette</source>
-        <translation>&amp;Standardna paleta</translation>
-    </message>
-    <message>
-        <location filename="../styleconfig.ui" line="254"/>
-        <source>Set GTK themes (GTK configuration files will be overwritten!)</source>
-        <translation>Postavi GTK teme (datoteke GTK konfiguracije će se prepisati!)</translation>
-    </message>
-    <message>
-        <location filename="../styleconfig.ui" line="274"/>
-        <source>GTK 3 Theme</source>
-        <translation>GTK 3 tema</translation>
+        <translation>S&amp;tandardna paleta</translation>
     </message>
     <message>
         <location filename="../styleconfig.ui" line="284"/>
-        <source>GTK 2 Theme</source>
-        <translation>GTK 2 tema</translation>
-    </message>
-    <message>
         <location filename="../styleconfig.ui" line="294"/>
-        <source>To attempt uniform theming, either select similar style/theme (if available) across all lists, or select &apos;gtk2&apos; Qt style (if available) to mimic GTK themes.
-
-Make sure &apos;xsettingsd&apos; is installed to help GTK applications apply themes on the fly.</source>
-        <translation>Za jednoliku upotrebu tema, odaberi sličan stil/temu (ako su dostupni) na svim popisima ili odaberi Qt stil „gtk2” (ako je dostupan) za oponašanje GTK teme.
-
-Uvjeri se da je „xsettingsd” instaliran, koji GTK programima pomaže trenutno primijeniti teme.</translation>
+        <location filename="../styleconfig.ui" line="326"/>
+        <location filename="../styleconfig.ui" line="336"/>
+        <location filename="../styleconfig.ui" line="368"/>
+        <source>May be overridden by Qt style or app</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="311"/>
+        <location filename="../styleconfig.ui" line="287"/>
         <source>Toolbar button style:</source>
         <translation>Stil gumbova alatne trake:</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="319"/>
+        <location filename="../styleconfig.ui" line="298"/>
         <source>Only display the icon</source>
         <translation>Prikaži samo ikone</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="324"/>
+        <location filename="../styleconfig.ui" line="303"/>
         <source>Only display the text</source>
         <translation>Prikaži samo tekst</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="329"/>
+        <location filename="../styleconfig.ui" line="308"/>
         <source>The text appears beside the icon</source>
         <translation>Tekst se prikazuje pored ikone</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="334"/>
+        <location filename="../styleconfig.ui" line="313"/>
         <source>The text appears under the icon</source>
         <translation>Tekst se prikazuje ispod ikone</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="339"/>
+        <location filename="../styleconfig.ui" line="318"/>
         <source>Default</source>
         <translation>Standardno</translation>
     </message>
     <message>
-        <location filename="../styleconfig.ui" line="347"/>
+        <location filename="../styleconfig.ui" line="329"/>
+        <source>Toolbar icon size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="340"/>
+        <source>16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="345"/>
+        <source>22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="350"/>
+        <source>24</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="355"/>
+        <source>32</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="360"/>
+        <source>48</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.ui" line="371"/>
         <source>Activate item on single click</source>
         <translation>Aktiviraj objekt jednim pritiskom</translation>
     </message>
     <message>
         <location filename="../styleconfig.ui" line="51"/>
-        <source>Qt Style</source>
-        <translation>Qt stil</translation>
+        <source>Qt Style:</source>
+        <translation>Qt stil:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="330"/>
+        <location filename="../styleconfig.cpp" line="340"/>
+        <source>Save Palette</source>
+        <translation>Spremi paletu</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="330"/>
+        <source>Palette name:</source>
+        <translation>Ime palete:</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="341"/>
+        <source>A palette with the same name exists.
+Do you want to replace it?</source>
+        <translation>Paleta s tim imenom već postoji.
+Želiš li je zamijeniti?</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="484"/>
+        <source>Remove Palettes</source>
+        <translation>Ukloni palete</translation>
+    </message>
+    <message>
+        <location filename="../styleconfig.cpp" line="485"/>
+        <source>Do you really want to remove selected palette(s)?
+Root palettes will remain intact if existing.</source>
+        <translation>Stvarno želiš ukloniti odabrane palete?
+Korijenske palete će ostati netaknute ako postoje.</translation>
     </message>
 </context>
 </TS>
