@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2013 Christian Surlykke
  *
@@ -42,7 +42,6 @@
 int main (int argc, char **argv)
 {
     LXQt::SingleApplication app(argc, argv);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     QCommandLineParser parser;
     parser.setApplicationDescription(QStringLiteral("LXQt Config File Associations"));

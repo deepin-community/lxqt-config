@@ -9,60 +9,60 @@
         <translation>Παράθυρο διαλόγου</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="20"/>
+        <location filename="../keyboardconfig.ui" line="143"/>
         <source>Cursor flash time:</source>
         <translation>Χρόνος αναβοσβήματος δρομέα:</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="27"/>
+        <location filename="../keyboardconfig.ui" line="20"/>
         <source>&lt;b&gt;Keyboard&lt;/b&gt;</source>
         <translation>&lt;b&gt;Πληκτρολόγιο&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="34"/>
+        <location filename="../keyboardconfig.ui" line="160"/>
         <source>Beep when there is an error of keyboard input</source>
         <translation>Προειδοποιητικός ήχος αν υπάρχει σφάλμα στην είσοδο πληκτρολογίου</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="41"/>
+        <location filename="../keyboardconfig.ui" line="150"/>
         <source> ms</source>
         <translation> ms</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="51"/>
+        <location filename="../keyboardconfig.ui" line="27"/>
         <source>Character Repeat</source>
         <translation>Επανάληψη χαρακτήρα</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="79"/>
-        <location filename="../keyboardconfig.ui" line="143"/>
+        <location filename="../keyboardconfig.ui" line="69"/>
+        <location filename="../keyboardconfig.ui" line="116"/>
         <source>Long</source>
         <translation>Μακρύ</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="108"/>
+        <location filename="../keyboardconfig.ui" line="33"/>
         <source>Repeat delay:</source>
         <translation>Καθυστέρηση επανάληψης:</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="115"/>
-        <location filename="../keyboardconfig.ui" line="136"/>
+        <location filename="../keyboardconfig.ui" line="40"/>
+        <location filename="../keyboardconfig.ui" line="90"/>
         <source>Short</source>
         <translation>Βραχύ</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="122"/>
+        <location filename="../keyboardconfig.ui" line="83"/>
         <source>Repeat interval:</source>
         <translation>Χρονικό διάστημα επανάληψης:</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="129"/>
+        <location filename="../keyboardconfig.ui" line="130"/>
         <source>Type in the following box to test your keyboard settings</source>
         <translation>Πληκτρολογήστε στο παρακάτω πλαίσιο για να δοκιμάσετε τις ρυθμίσεις του πληκτρολογίου</translation>
     </message>
     <message>
-        <location filename="../keyboardconfig.ui" line="150"/>
-        <location filename="../keyboardconfig.ui" line="157"/>
+        <location filename="../keyboardconfig.ui" line="76"/>
+        <location filename="../keyboardconfig.ui" line="123"/>
         <source>0</source>
         <translation>0</translation>
     </message>
@@ -171,32 +171,46 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../lxqt-config-input.cpp" line="70"/>
+        <location filename="../lxqt-config-input.cpp" line="77"/>
+        <source>Platform Unsupported</source>
+        <translation>Μη υποστηριζόμενο πλατύβαθρο</translation>
+    </message>
+    <message>
+        <location filename="../lxqt-config-input.cpp" line="38"/>
+        <source>LXQt input settings are currently unsupported under Wayland.
+
+Mouse, touchpad and keyboard can be configured in the settings of the compositor.</source>
+        <translation>Οι ρυθμίσεις εισαγωγής LXQt δεν υποστηρίζονται στο Wayland.
+
+Το ποντίκι, η επιφάνεια αφής και το πληκτρολόγιο μπορούν να διαμορφωθούν από τις ρυθμίσεις του συνθέτη.</translation>
+    </message>
+    <message>
+        <location filename="../lxqt-config-input.cpp" line="81"/>
         <source>Keyboard and Mouse Settings</source>
         <translation>Ρυθμίσεις πληκτρολογίου και ποντικιού</translation>
     </message>
     <message>
-        <location filename="../lxqt-config-input.cpp" line="79"/>
+        <location filename="../lxqt-config-input.cpp" line="90"/>
         <source>Mouse</source>
         <translation>Ποντίκι</translation>
     </message>
     <message>
-        <location filename="../lxqt-config-input.cpp" line="88"/>
+        <location filename="../lxqt-config-input.cpp" line="99"/>
         <source>Cursor</source>
         <translation>Δρομέας</translation>
     </message>
     <message>
-        <location filename="../lxqt-config-input.cpp" line="95"/>
+        <location filename="../lxqt-config-input.cpp" line="106"/>
         <source>Keyboard</source>
         <translation>Πληκτρολόγιο</translation>
     </message>
     <message>
-        <location filename="../lxqt-config-input.cpp" line="103"/>
+        <location filename="../lxqt-config-input.cpp" line="114"/>
         <source>Keyboard Layout</source>
         <translation>Διάταξη πληκτρολογίου</translation>
     </message>
     <message>
-        <location filename="../lxqt-config-input.cpp" line="112"/>
+        <location filename="../lxqt-config-input.cpp" line="123"/>
         <source>Mouse and Touchpad</source>
         <translation>Ποντίκι και επιφάνεια αφής</translation>
     </message>
@@ -224,7 +238,7 @@
     <message>
         <location filename="../touchpadconfig.ui" line="14"/>
         <source>TouchpadConfig </source>
-        <translation>Διαμόρφωση επιφάνειας αφής</translation>
+        <translation>Διαμόρφωση επιφάνειας αφής </translation>
     </message>
     <message>
         <location filename="../touchpadconfig.ui" line="20"/>
@@ -232,52 +246,52 @@
         <translation>Συσκευή:</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="30"/>
+        <location filename="../touchpadconfig.ui" line="37"/>
         <source>Acceleration speed:</source>
         <translation>Ταχύτητα επιτάχυνσης:</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="37"/>
+        <location filename="../touchpadconfig.ui" line="60"/>
         <source>Tap to click</source>
         <translation>Κτύπημα για κλικ</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="44"/>
+        <location filename="../touchpadconfig.ui" line="67"/>
         <source>Natural Scrolling</source>
-        <translation>Φυσική κύλιση:</translation>
+        <translation>Φυσική κύλιση</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="51"/>
+        <location filename="../touchpadconfig.ui" line="74"/>
         <source>Tap and drag</source>
         <translation>Κτύπημα και σύρσιμο</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="79"/>
+        <location filename="../touchpadconfig.ui" line="86"/>
         <source>Scrolling:</source>
         <translation>Κύλιση:</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="102"/>
+        <location filename="../touchpadconfig.ui" line="109"/>
         <source>&amp;Disabled</source>
         <translation>&amp;Απενεργοποιημένο</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="109"/>
+        <location filename="../touchpadconfig.ui" line="116"/>
         <source>&amp;Two-Finger</source>
         <translation>&amp;Δυο-δάκτυλα</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="116"/>
+        <location filename="../touchpadconfig.ui" line="123"/>
         <source>Ed&amp;ge</source>
         <translation>Ά&amp;κρη</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="123"/>
+        <location filename="../touchpadconfig.ui" line="130"/>
         <source>B&amp;utton</source>
         <translation>&amp;Κουμπί</translation>
     </message>
     <message>
-        <location filename="../touchpadconfig.ui" line="145"/>
+        <location filename="../touchpadconfig.ui" line="30"/>
         <source>DeviceInfoLabel</source>
         <translation>Ετικέτα πληροφοριών της συσκευής</translation>
     </message>

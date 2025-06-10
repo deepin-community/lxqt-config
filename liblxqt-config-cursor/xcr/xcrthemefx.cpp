@@ -66,11 +66,11 @@ bool XCursorThemeFX::str2num (const QString &s, quint32 &res) {
 QList<XCursorThemeFX::tAnimSeq> XCursorThemeFX::parseScript (const QString &script, quint32 maxFrame) {
   QList<tAnimSeq> res;
   QString scp = script; scp.replace(QLatin1String("\r"), QLatin1String("\n"));
-  const QStringList scpL = scp.split(QLatin1Char('\n'), QString::SkipEmptyParts);
+  const QStringList scpL = scp.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
   for (const QString &ss : scpL) {
     const QString s = ss.simplified();
     //qDebug() << s;
-    QStringList fld = s.split(QLatin1Char(','), QString::SkipEmptyParts); //BUG!BUG!BUG!
+    QStringList fld = s.split(QLatin1Char(','), Qt::SkipEmptyParts); //BUG!BUG!BUG!
     if (fld.size() != 2) {
      qDebug() << "script error:" << s;
       qWarning() << "script error:" << s;
@@ -215,7 +215,7 @@ bool XCursorThemeFX::parseCursorFXTheme (const QString &aFileName) {
     if ((quint32)pos >= ihdrSize || (quint32)pos+len >= ihdrSize) continue; // skip invalid one
     QByteArray sBA(unp.mid(pos, len));
     sBA.append('\0'); sBA.append('\0');
-    QString s = QString::fromUtf16((const ushort *)sBA.constData()).simplified();
+    QString s = QString::fromUtf16((const char16_t *)sBA.constData()).simplified();
     switch (f) {
       case 0: setTitle(s); break;
       case 1: setAuthor(s); break;
@@ -334,7 +334,7 @@ bool XCursorThemeFX::parseCursorFXTheme (const QString &aFileName) {
       }
       QByteArray bs(unp.mid(ipos+addonOfs, addonLen));
       bs.append('\0'); bs.append('\0');
-      script = QString::fromUtf16((const ushort *)bs.constData());
+      script = QString::fromUtf16((const char16_t *)bs.constData());
       qDebug() << "script:\n" << script;
       // create animseq
       aseq = parseScript(script, frameCnt);
@@ -366,7 +366,7 @@ bool XCursorThemeFX::parseCursorFXTheme (const QString &aFileName) {
    qDebug() << "frameWdt:" << frameWdt << "left:" << img.width()%(frameWdt*frameCnt);
     // now build animation sequence
     int fCnt = 0;
-    for (const tAnimSeq &a : qAsConst(aseq)) {
+    for (const tAnimSeq &a : std::as_const(aseq)) {
       bool back = a.from > a.to; // going backwards
       quint32 fNo = a.from;
       for (;; fCnt++) {

@@ -83,7 +83,7 @@ lxqt_translate_ts(QM_FILES
 )
 
 lxqt_app_translation_loader(QM_LOADER ${PROJECT_NAME})
-lxqt_translate_desktop(DESKTOP_FILES SOURCES ${PROJECT_NAME}.desktop.in)
+lxqt_translate_desktop(DESKTOP_FILES SOURCES ${PROJECT_NAME}.desktop.in USE_YAML)
 
 #************************************************
 
@@ -99,8 +99,7 @@ add_executable(lxqt-config-input
 )
 
 set(lxqt-config-input_TLBS
-    Qt5::Widgets
-    Qt5::X11Extras
+    Qt6::Widgets
     ${X11_LIBRARIES}
     lxqt
     lxqt-config-cursor

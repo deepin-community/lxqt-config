@@ -135,7 +135,8 @@ bool QCategorizedView::Private::isCategorized() const
 
 QStyleOptionViewItem QCategorizedView::Private::blockRect(const QModelIndex &representative)
 {
-    QStyleOptionViewItem option(q->viewOptions());
+    QStyleOptionViewItem option;
+    q->initViewItemOption(&option);
     const int height = categoryDrawer->categoryHeight(representative, option);
     const QString categoryDisplay = representative.data(QCategorizedSortFilterProxyModel::CategoryDisplayRole).toString();
     QPoint pos = blockPosition(categoryDisplay);
@@ -167,6 +168,10 @@ QPair<QModelIndex, QModelIndex> QCategorizedView::Private::intersectingIndexesWi
         itemRect.topLeft().rx() += horizontalOff;
         itemRect.bottomRight().ry() += verticalOff;
         itemRect.bottomRight().rx() += horizontalOff;
+        if (hasGrid()) { // see QCategorizedView::visualRect
+            itemRect.setLeft(itemRect.left() - (q->gridSize().width() - itemRect.width()) / 2);
+            itemRect.setSize(q->gridSize());
+        }
         if (itemRect.bottomRight().y() <= rect.topLeft().y()) {
             bottom = middle + 1;
         } else {
@@ -189,6 +194,10 @@ QPair<QModelIndex, QModelIndex> QCategorizedView::Private::intersectingIndexesWi
         itemRect.topLeft().rx() += horizontalOff;
         itemRect.bottomRight().ry() += verticalOff;
         itemRect.bottomRight().rx() += horizontalOff;
+        if (hasGrid()) {
+            itemRect.setLeft(itemRect.left() - (q->gridSize().width() - itemRect.width()) / 2);
+            itemRect.setSize(q->gridSize());
+        }
         if (itemRect.topLeft().y() <= rect.bottomRight().y()) {
             bottom = middle + 1;
         } else {
@@ -219,7 +228,9 @@ QPoint QCategorizedView::Private::blockPosition(const QString &category)
         if (index.row() < categoryIndex.row()) {
             continue;
         }
-        res.ry() += categoryDrawer->categoryHeight(categoryIndex, q->viewOptions()) + categorySpacing;
+        QStyleOptionViewItem option;
+        q->initViewItemOption(&option);
+        res.ry() += categoryDrawer->categoryHeight(categoryIndex, option) + categorySpacing;
         if (index.row() == categoryIndex.row()) {
             continue;
         }
@@ -332,7 +343,7 @@ void QCategorizedView::Private::rowsInserted(const QModelIndex &parent, int star
         QList<Block> blockList = blocks.values();
         std::sort(blockList.begin(), blockList.end(), Block::lessThan);
         QList<int> firstIndexesRows;
-        for (const Block &block : qAsConst(blockList)) {
+        for (const Block &block : std::as_const(blockList)) {
             firstIndexesRows << block.firstIndex.row();
         }
         //END: order for marking as alternate those blocks that are alternate
@@ -535,13 +546,13 @@ void QCategorizedView::setModel(QAbstractItemModel *model)
     d->blocks.clear();
 
     if (d->proxyModel) {
-        disconnect(d->proxyModel, SIGNAL(layoutChanged()), this, SLOT(slotLayoutChanged()));
+        disconnect(d->proxyModel, &QCategorizedSortFilterProxyModel::layoutChanged, this, &QCategorizedView::slotLayoutChanged);
     }
 
     d->proxyModel = dynamic_cast<QCategorizedSortFilterProxyModel*>(model);
 
     if (d->proxyModel) {
-        connect(d->proxyModel, SIGNAL(layoutChanged()), this, SLOT(slotLayoutChanged()));
+        connect(d->proxyModel, &QCategorizedSortFilterProxyModel::layoutChanged, this, &QCategorizedView::slotLayoutChanged);
     }
 
     QListView::setModel(model);
@@ -652,8 +663,7 @@ QCategoryDrawer *QCategorizedView::categoryDrawer() const
 void QCategorizedView::setCategoryDrawer(QCategoryDrawer *categoryDrawer)
 {
     if (d->categoryDrawerV2) {
-        disconnect(d->categoryDrawerV2, SIGNAL(collapseOrExpandClicked(QModelIndex)),
-                   this, SLOT(_k_slotCollapseOrExpandClicked(QModelIndex)));
+        disconnect(d->categoryDrawerV2, SIGNAL(collapseOrExpandClicked(QModelIndex)), this, SLOT(_k_slotCollapseOrExpandClicked(QModelIndex)));
     }
 
     d->categoryDrawer = categoryDrawer;
@@ -661,8 +671,7 @@ void QCategorizedView::setCategoryDrawer(QCategoryDrawer *categoryDrawer)
     d->categoryDrawerV3 = dynamic_cast<QCategoryDrawerV3*>(categoryDrawer);
 
     if (d->categoryDrawerV2) {
-        connect(d->categoryDrawerV2, SIGNAL(collapseOrExpandClicked(QModelIndex)),
-                this, SLOT(_k_slotCollapseOrExpandClicked(QModelIndex)));
+        connect(d->categoryDrawerV2, SIGNAL(collapseOrExpandClicked(QModelIndex)), this, SLOT(_k_slotCollapseOrExpandClicked(QModelIndex)));
     }
 }
 
@@ -761,6 +770,10 @@ QModelIndex QCategorizedView::indexAt(const QPoint &point) const
             }
             return QModelIndex();
         }
+        if (d->hasGrid()) { // see QCategorizedView::visualRect
+            rect.setLeft(rect.left() - (gridSize().width() - rect.width()) / 2);
+            rect.setSize(gridSize());
+        }
         bool directionCondition;
         if (layoutDirection() == Qt::LeftToRight) {
             directionCondition = point.x() > rect.bottomRight().x();
@@ -785,7 +798,9 @@ void QCategorizedView::reset()
 
 QSize QCategorizedView::decorationSize() const
 {
-    return viewOptions().decorationSize;
+    QStyleOptionViewItem option;
+    initViewItemOption(&option);
+    return option.decorationSize;
 }
 
 void QCategorizedView::paintEvent(QPaintEvent *event)
@@ -807,7 +822,8 @@ void QCategorizedView::paintEvent(QPaintEvent *event)
     while (it != d->blocks.constEnd()) {
         const Private::Block &block = *it;
         const QModelIndex categoryIndex = d->proxyModel->index(block.firstIndex.row(), d->proxyModel->sortColumn(), rootIndex());
-        QStyleOptionViewItem option(viewOptions());
+        QStyleOptionViewItem option;
+        initViewItemOption(&option);
         option.features |= d->alternatingBlockColors && block.alternate ? QStyleOptionViewItem::Alternate
                                                                         : QStyleOptionViewItem::None;
         option.state |= !d->collapsibleBlocks || !block.collapsed ? QStyle::State_Open
@@ -856,7 +872,8 @@ void QCategorizedView::paintEvent(QPaintEvent *event)
 
             const QModelIndex index = d->proxyModel->index(i, modelColumn(), rootIndex());
             const Qt::ItemFlags flags = d->proxyModel->flags(index);
-            QStyleOptionViewItem option(viewOptions());
+            QStyleOptionViewItem option;
+            initViewItemOption(&option);
             option.rect = visualRect(index);
             option.widget = this;
             option.features |= wordWrap() ? QStyleOptionViewItem::WrapText
@@ -878,7 +895,7 @@ void QCategorizedView::paintEvent(QPaintEvent *event)
                                                            : QStyle::State_None;
             }
 
-            itemDelegate(index)->paint(&p, option, index);
+            itemDelegateForIndex(index)->paint(&p, option, index);
             ++i;
         }
         //END: draw items
@@ -953,7 +970,7 @@ void QCategorizedView::setSelection(const QRect &rect,
 void QCategorizedView::mouseMoveEvent(QMouseEvent *event)
 {
     QListView::mouseMoveEvent(event);
-    d->hoveredIndex = indexAt(event->pos());
+    d->hoveredIndex = indexAt(event->position().toPoint());
     const SelectionMode itemViewSelectionMode = selectionMode();
     if (state() == DragSelectingState && isSelectionRectVisible() && itemViewSelectionMode != SingleSelection
         && itemViewSelectionMode != NoSelection) {
@@ -969,7 +986,8 @@ void QCategorizedView::mouseMoveEvent(QMouseEvent *event)
     while (it != d->blocks.constEnd()) {
         const Private::Block &block = *it;
         const QModelIndex categoryIndex = d->proxyModel->index(block.firstIndex.row(), d->proxyModel->sortColumn(), rootIndex());
-        QStyleOptionViewItem option(viewOptions());
+        QStyleOptionViewItem option;
+        initViewItemOption(&option);
         const int height = d->categoryDrawer->categoryHeight(categoryIndex, option);
         QPoint pos = d->blockPosition(it.key());
         pos.ry() -= height;
@@ -1099,7 +1117,7 @@ void QCategorizedView::startDrag(Qt::DropActions supportedActions)
 void QCategorizedView::dragMoveEvent(QDragMoveEvent *event)
 {
     QListView::dragMoveEvent(event);
-    d->hoveredIndex = indexAt(event->pos());
+    d->hoveredIndex = indexAt(event->position().toPoint());
 }
 
 void QCategorizedView::dragEnterEvent(QDragEnterEvent *event)
@@ -1194,6 +1212,7 @@ QModelIndex QCategorizedView::moveCursor(CursorAction cursorAction,
 
                     return QModelIndex();
                 }
+                break;
             }
         case MoveUp: {
                 if (d->hasGrid() || uniformItemSizes()) {
@@ -1228,6 +1247,7 @@ QModelIndex QCategorizedView::moveCursor(CursorAction cursorAction,
 
                     return QModelIndex();
                 }
+                break;
             }
         default:
             break;
@@ -1329,7 +1349,7 @@ void QCategorizedView::rowsAboutToBeRemoved(const QModelIndex &parent,
     }
     //END: update the items that are in quarantine in affected categories
 
-    for(const QString &category : qAsConst(listOfCategoriesMarkedForRemoval)) {
+    for(const QString &category : std::as_const(listOfCategoriesMarkedForRemoval)) {
         d->blocks.remove(category);
     }
 
@@ -1339,7 +1359,7 @@ void QCategorizedView::rowsAboutToBeRemoved(const QModelIndex &parent,
         QList<Private::Block> blockList = d->blocks.values();
         std::sort(blockList.begin(), blockList.end(), Private::Block::lessThan);
         QList<int> firstIndexesRows;
-        for (const Private::Block &block : qAsConst(blockList)) {
+        for (const Private::Block &block : std::as_const(blockList)) {
             firstIndexesRows << block.firstIndex.row();
         }
         //END: order for marking as alternate those blocks that are alternate
@@ -1374,7 +1394,7 @@ void QCategorizedView::updateGeometries()
      * So we prevent QListView from having an own opinion on the scrollbar visibility by
      * fixing it before calling the baseclass QListView::updateGeometries()
      *
-     * Since the implicit show/hide by the followin range setting will cause further resizes if the policy is Qt::ScrollBarAsNeeded
+     * Since the implicit show/hide by the following range setting will cause further resizes if the policy is Qt::ScrollBarAsNeeded
      * we keep it static until we're done, then restore the original value and ultimately change the scrollbar visibility ourself.
      */
     if (d->isCategorized()) { // important! - otherwise we'd pollute the setting if the view is initially not categorized
@@ -1457,7 +1477,7 @@ void QCategorizedView::currentChanged(const QModelIndex &current,
 
 void QCategorizedView::dataChanged(const QModelIndex &topLeft,
                                    const QModelIndex &bottomRight,
-                                   const QVector<int> & roles)
+                                   const QList<int> & /* roles */)
 {
     QListView::dataChanged(topLeft, bottomRight);
     if (!d->isCategorized()) {

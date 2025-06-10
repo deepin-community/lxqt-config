@@ -1,7 +1,5 @@
-Name: lxqt-config
 Bug-Database: https://github.com/lxqt/lxqt-config/issues
 Bug-Submit: https://github.com/lxqt/lxqt-config/issues/new
 Changelog: https://github.com/lxqt/lxqt-config/blob/master/CHANGELOG
-Repository: https://github.com/lxqt/lxqt-config
-Repository-Browser: https://github.com/lxqt/lxqt-config
-
+Repository: https://github.com/lxqt/lxqt-config.git
+Repository-Browse: https://github.com/lxqt/lxqt-config

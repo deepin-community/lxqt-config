@@ -21,6 +21,7 @@
 #include <LXQt/ConfigDialogCmdLineOptions>
 #include <LXQt/Settings>
 #include <QCommandLineParser>
+#include <QMessageBox>
 #include "mouseconfig.h"
 #include "keyboardconfig.h"
 #include "../liblxqt-config-cursor/selectwnd.h"
@@ -33,7 +34,8 @@
 
 int main(int argc, char** argv) {
     LXQt::SingleApplication app(argc, argv);
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+
+    QString waylandMsg = QObject::tr("LXQt input settings are currently unsupported under Wayland.\n\nMouse, touchpad and keyboard can be configured in the settings of the compositor.");
 
     QCommandLineParser parser;
     LXQt::ConfigDialogCmdLineOptions dlgOptions;
@@ -62,10 +64,19 @@ int main(int argc, char** argv) {
 #ifdef WITH_TOUCHPAD
     bool loadLastTouchpadSettings = parser.isSet(loadOption);
     if (loadLastTouchpadSettings) {
-        TouchpadDevice::loadSettings(&settings);
+        if (QGuiApplication::platformName() == QLatin1String("wayland"))
+            qDebug().noquote() << waylandMsg; // Under wayland, show a debug message and exit.
+        else
+            TouchpadDevice::loadSettings(&settings);
         return 0;
     }
 #endif
+
+    if (QGuiApplication::platformName() == QLatin1String("wayland"))
+    { // Show a message dialog under wayland if no options are given.
+        QMessageBox::warning(nullptr, QObject::tr("Platform Unsupported"), waylandMsg);
+        return 0;
+    }
 
     LXQt::ConfigDialog dlg(QObject::tr("Keyboard and Mouse Settings"), &settings);
     dlg.setButtons(QDialogButtonBox::Apply|QDialogButtonBox::Close|QDialogButtonBox::Reset);
@@ -136,10 +147,14 @@ int main(int argc, char** argv) {
 
     dlg.setWindowIcon(QIcon::fromTheme(QStringLiteral("input-keyboard")));
 
+    LXQt::Settings mConfigInputSettings(QStringLiteral("lxqt-config-input"));
+    dlg.resize(mConfigInputSettings.value(QStringLiteral("size")).toSize().expandedTo(QSize(600, 400)));
+
     const QString initialPage = dlgOptions.page();
     if (!initialPage.isEmpty())
         dlg.showPage(initialPage);
 
     dlg.exec();
+    mConfigInputSettings.setValue(QStringLiteral("size"), dlg.size());
     return 0;
 }

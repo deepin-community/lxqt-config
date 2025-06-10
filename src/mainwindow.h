@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -60,7 +60,7 @@ private:
     QPersistentModelIndex pendingActivation;
 
 private:
-    void builGroup(const QDomElement& xml);
+    void buildGroup(const QDomElement& xml);
     void setSizing();
     void activateItem();
 

@@ -48,7 +48,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>Qt Style</string>
+            <string>Qt Style:</string>
            </property>
           </widget>
          </item>
@@ -127,13 +127,27 @@
                <widget class="ColorLabel" name="highlightColorLabel"/>
               </item>
               <item row="3" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Tooltip:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="ColorLabel" name="tooltipColorLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
                <widget class="QLabel" name="label_13">
                 <property name="text">
                  <string>Link:</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
+              <item row="4" column="1">
                <widget class="ColorLabel" name="linkColorLabel"/>
               </item>
              </layout>
@@ -177,13 +191,27 @@
                <widget class="ColorLabel" name="highlightedTextColorLabel"/>
               </item>
               <item row="3" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Tooltip Text:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="ColorLabel" name="tooltipTextColorLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
                <widget class="QLabel" name="label_14">
                 <property name="text">
                  <string>Visited Link:</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
+              <item row="4" column="1">
                <widget class="ColorLabel" name="linkVisitedColorLabel"/>
               </item>
              </layout>
@@ -208,6 +236,20 @@
             <property name="topMargin">
              <number>10</number>
             </property>
+            <item>
+             <widget class="QToolButton" name="savePaletteBtn">
+              <property name="text">
+               <string>&amp;Save Palette</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="loadPaletteBtn">
+              <property name="text">
+               <string>&amp;Load Palette</string>
+              </property>
+             </widget>
+            </item>
             <item>
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
@@ -236,84 +278,21 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QGroupBox" name="advancedOptionsGroupBox">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="title">
-          <string>Set GTK themes (GTK configuration files will be overwritten!)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <layout class="QFormLayout" name="formLayout_2">
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>GTK 3 Theme</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="gtk3ComboBox"/>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>GTK 2 Theme</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="gtk2ComboBox"/>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="uniformThemeLabel">
-              <property name="text">
-               <string>To attempt uniform theming, either select similar style/theme (if available) across all lists, or select 'gtk2' Qt style (if available) to mimic GTK themes.
-
-Make sure 'xsettingsd' is installed to help GTK applications apply themes on the fly.</string>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="4" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_2">
+         <property name="toolTip">
+          <string>May be overridden by Qt style or app</string>
+         </property>
          <property name="text">
           <string>Toolbar button style:</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="3" column="1">
         <widget class="QComboBox" name="toolButtonStyle">
+         <property name="toolTip">
+          <string>May be overridden by Qt style or app</string>
+         </property>
          <item>
           <property name="text">
            <string>Only display the icon</string>
@@ -341,8 +320,53 @@ Make sure 'xsettingsd' is installed to help GTK applications apply themes on the
          </item>
         </widget>
        </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="toolTip">
+          <string>May be overridden by Qt style or app</string>
+         </property>
+         <property name="text">
+          <string>Toolbar icon size:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="toolBarIconSize">
+         <property name="toolTip">
+          <string>May be overridden by Qt style or app</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>16</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>22</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>24</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>32</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>48</string>
+          </property>
+         </item>
+        </widget>
+       </item>
        <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="singleClickActivate">
+         <property name="toolTip">
+          <string>May be overridden by Qt style or app</string>
+         </property>
          <property name="text">
           <string>Activate item on single click</string>
          </property>

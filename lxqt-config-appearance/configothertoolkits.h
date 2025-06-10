@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2018 LXQt team
  *
@@ -38,6 +38,8 @@ class ConfigOtherToolKits : public QObject
 public:
     ConfigOtherToolKits(LXQt::Settings *settings, LXQt::Settings *configAppearanceSettings, QObject *parent = nullptr);
     ~ConfigOtherToolKits();
+
+    void startXsettingsd();
     QStringList getGTKThemes(QString version);
     QString getGTKThemeFromRCFile(QString version);
     QString getGTKConfigPath(QString version);
@@ -48,6 +50,7 @@ public slots:
     void setConfig();
     void setXSettingsConfig();
     void setGTKConfig(QString version, QString theme = QString());
+    void setGsettingsConfig(QString version, QString theme = QString());
 
 private:
     struct Config {
@@ -57,8 +60,12 @@ private:
         QString toolButtonStyle;
         int buttonStyle;
     } mConfig;
-    void writeConfig(QString path, const char *configString);
-    QString getConfig(const char *configString);
+
+    enum Version {
+        GTK2, GTK3, GTK3GSETTINGS
+    };
+    void writeConfig(QString path, const char *configString, Version version);
+    QString getConfig(const char *configString, Version version);
     void updateConfigFromSettings();
 
     LXQt::Settings *mSettings;

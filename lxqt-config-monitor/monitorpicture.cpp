@@ -24,7 +24,10 @@
 #include <QDebug>
 #include <QVector2D>
 #include <QRectF>
+#include <KScreen/Mode>
 #include <QScrollBar>
+#include <QResizeEvent>
+#include <QTransform>
 
 #include "configure.h"
 
@@ -35,8 +38,8 @@ static QSize sizeFromString(QString str)
     int height = 0;
     int x = str.indexOf(QLatin1Char('x'));
     if (x > 0) {
-        width = str.leftRef(x).toInt();
-        height = str.midRef(x + 1).toInt();
+        width = str.first(x).toInt();
+        height = str.last(str.size() - x - 1).toInt();
     }
     return QSize(width, height);
 }
@@ -62,7 +65,7 @@ void MonitorPictureProxy::updatePosition()
 }
 
 MonitorPictureDialog::MonitorPictureDialog(KScreen::ConfigPtr config, QWidget * parent, Qt::WindowFlags f) :
-    QDialog(parent,f)
+    QWidget(parent,f)
 {
     updatingOk = false;
     firstShownOk = false;
@@ -76,7 +79,7 @@ void MonitorPictureDialog::setScene(QList<MonitorWidget *> monitors)
 {
     int monitorsWidth =0;
     int monitorsHeight = 0;
-    QGraphicsScene *scene = new QGraphicsScene();
+    QGraphicsScene *scene = new QGraphicsScene(this);
     for (MonitorWidget *monitor : monitors) {
         MonitorPicture *monitorPicture = new MonitorPicture(nullptr, monitor, this);
         pictures.append(monitorPicture);
@@ -84,8 +87,8 @@ void MonitorPictureDialog::setScene(QList<MonitorWidget *> monitors)
         monitorsWidth += monitorPicture->rect().width();
         monitorsHeight += monitorPicture->rect().height();
         MonitorPictureProxy *proxy = new MonitorPictureProxy(this, monitorPicture);
-        proxy->connect(monitor->output.data(), SIGNAL(currentModeIdChanged()), SLOT(updateSize()));
-        proxy->connect(monitor->output.data(), SIGNAL(posChanged()), SLOT(updatePosition()));
+        proxy->connect(monitor->output.data(), &KScreen::Output::currentModeIdChanged, proxy, &MonitorPictureProxy::updateSize);
+        proxy->connect(monitor->output.data(), &KScreen::Output::posChanged, proxy, &MonitorPictureProxy::updatePosition);
     }
     // The blue rectangle is maximum size of virtual screen (framebuffer)
     scene->addRect(0, 0, mConfig->screen()->maxSize().width(), mConfig->screen()->maxSize().height(), QPen(Qt::blue, 20))->setOpacity(0.5);
@@ -96,13 +99,34 @@ void MonitorPictureDialog::setScene(QList<MonitorWidget *> monitors)
 void MonitorPictureDialog::showEvent(QShowEvent * event)
 {
     QWidget::showEvent(event);
-    if( ! firstShownOk ) {
-        // Update scale and set scrollbar position.
-        // Real widget size is not set, until widget is shown.
+    if (!firstShownOk) {
         firstShownOk = true;
-        int minWidgetLength = qMin(ui.graphicsView->size().width(), ui.graphicsView->size().width()) / 1.5;
-        qDebug() << "minWidgetLength" << minWidgetLength << "maxMonitorSize" << maxMonitorSize << "scale" << minWidgetLength / (float) maxMonitorSize;
-        ui.graphicsView->scale(minWidgetLength / (float) maxMonitorSize, minWidgetLength / (float) maxMonitorSize);
+        qreal minWidgetLength = static_cast<qreal>(qMax(ui.graphicsView->size().width(), ui.graphicsView->size().height())) / 1.2;
+        if (maxMonitorSize > 0)
+            updateScale(minWidgetLength / maxMonitorSize);
+    }
+}
+
+void MonitorPictureDialog::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+    if (firstShownOk && maxMonitorSize > 0)
+    {
+        qreal scale = ui.graphicsView->transform().m11();
+        if (scale > 0)
+        {
+            qreal minWidgetLength = static_cast<qreal>(qMax(ui.graphicsView->size().width(), ui.graphicsView->size().height())) / 1.2;
+            updateScale((minWidgetLength / maxMonitorSize) / scale);
+        }
+    }
+}
+
+void MonitorPictureDialog::updateScale(qreal scale)
+{
+    // Update scale and set scrollbar position.
+    if (scale > 0)
+    {
+        ui.graphicsView->scale(scale, scale);
         updateScene();
         ui.graphicsView->verticalScrollBar()->setValue(0);
         ui.graphicsView->horizontalScrollBar()->setValue(0);
@@ -126,7 +150,7 @@ void MonitorPictureDialog::updateMonitorWidgets(QString primaryMonitor)
     int x0, y0;
     x0 = y0 = 0;
 
-    for (MonitorPicture *picture : qAsConst(pictures)) {
+    for (MonitorPicture *picture : std::as_const(pictures)) {
         if (picture->monitorWidget->output->name() == primaryMonitor
                 || primaryMonitor == QLatin1String()) {
             x0 = picture->originX + picture->pos().x();
@@ -136,7 +160,7 @@ void MonitorPictureDialog::updateMonitorWidgets(QString primaryMonitor)
     }
 
     if( primaryMonitor == QLatin1String() ) {
-        for(MonitorPicture *picture : qAsConst(pictures)) {
+        for(MonitorPicture *picture : std::as_const(pictures)) {
             int x1 = picture->originX + picture->pos().x();
             int y1 = picture->originY + picture->pos().y();
             x0 = qMin(x0, x1);
@@ -144,7 +168,7 @@ void MonitorPictureDialog::updateMonitorWidgets(QString primaryMonitor)
         }
     }
 
-    for (MonitorPicture *picture : qAsConst(pictures)) {
+    for (MonitorPicture *picture : std::as_const(pictures)) {
         int x = picture->originX + picture->pos().x() - x0;
         int y = picture->originY + picture->pos().y() - y0;
         if( x != picture->monitorWidget->ui.xPosSpinBox->value() )
@@ -207,7 +231,7 @@ MonitorPicture::MonitorPicture(QGraphicsItem * parent,
 void MonitorPicture::adjustNameSize()
 {
     prepareGeometryChange();
-    qreal fontWidth = QFontMetrics(textItem->font()).width(monitorWidget->output->name() + QStringLiteral("  "));
+    qreal fontWidth = QFontMetrics(textItem->font()).horizontalAdvance(monitorWidget->output->name() + QStringLiteral("  "));
     textItem->setScale((qreal) this->rect().width() / fontWidth);
     QTransform transform;
     qreal width = qAbs(this->rect().width()/svgItem->boundingRect().width());
@@ -256,8 +280,8 @@ void MonitorPicture::mouseReleaseEvent(QGraphicsSceneMouseEvent * event)
 //////////////////////////////////////////////////////////////////////////////////
 
 struct Result_moveMonitorPictureToNearest {
-    bool ok;
-    bool outside;
+    bool ok = false;
+    bool outside = false;
     QVector2D vector;
 };
 
@@ -368,7 +392,7 @@ void MonitorPictureDialog::moveMonitorPictureToNearest(MonitorPicture* monitorPi
 
 
     QVector2D vector(0, 0);
-    for (MonitorPicture *picture : qAsConst(pictures)) {
+    for (MonitorPicture *picture : std::as_const(pictures)) {
         if (picture == monitorPicture)
             continue;
 

@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -32,12 +32,11 @@
 
 
 WarningLabel::WarningLabel(QWidget *parent)
-	: QWidget(parent)
+    : QWidget(parent)
 {
-	setupUi(this);
+    setupUi(this);
 
-	iconLabel->setPixmap(XdgIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(64, 64));
+    iconLabel->setPixmap(XdgIcon::fromTheme(QStringLiteral("dialog-warning")).pixmap(64, 64));
 
-	connect(showDirButton, SIGNAL(pressed()),
-			this, SIGNAL(showDirInfo()));
+    connect(showDirButton, &QPushButton::pressed, this, &WarningLabel::showDirInfo);
 }

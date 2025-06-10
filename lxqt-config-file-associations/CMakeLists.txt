@@ -43,7 +43,7 @@ lxqt_translate_ts(QM_FILES
 )
 
 lxqt_app_translation_loader(QM_LOADER ${PROJECT_NAME})
-lxqt_translate_desktop(DESKTOP_FILES SOURCES ${PROJECT_NAME}.desktop.in)
+lxqt_translate_desktop(DESKTOP_FILES SOURCES ${PROJECT_NAME}.desktop.in USE_YAML)
 
 #************************************************
 
@@ -57,10 +57,9 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-    KF5::WindowSystem
-    Qt5::Xml
-    Qt5::DBus
-    Qt5::Widgets
+    Qt6::Xml
+    Qt6::DBus
+    Qt6::Widgets
     ${LIBRARIES}
 )
 

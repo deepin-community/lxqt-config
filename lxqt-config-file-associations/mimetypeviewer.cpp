@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2013 Christian Surlykke
  *            2014 Luís Pereira <luis.artur.pereira.gmail.com>
@@ -47,7 +47,7 @@
 
 enum ItemTypeEntries {
     GroupType = 1001,
-    EntrieType = 1002
+    EntryType = 1002
 };
 
 static bool mimeTypeLessThan(const QMimeType& m1, const QMimeType& m2)
@@ -66,7 +66,7 @@ void MimetypeViewer::loadAllMimeTypes()
     QList<QMimeType> mimetypes = db.allMimeTypes();
 
     std::sort(mimetypes.begin(), mimetypes.end(), mimeTypeLessThan);
-    for (const QMimeType &mt : qAsConst(mimetypes)) {
+    for (const QMimeType &mt : std::as_const(mimetypes)) {
         const QString mimetype = mt.name();
         const int i = mimetype.indexOf(QLatin1Char('/'));
         const QString mediaType = mimetype.left(i);
@@ -79,7 +79,7 @@ void MimetypeViewer::loadAllMimeTypes()
             widget.mimetypeTreeWidget->insertTopLevelItem(0, item);
             mGroupItems.insert(mediaType, item);
         }
-        QTreeWidgetItem *item = new QTreeWidgetItem(mGroupItems.value(mediaType), EntrieType);
+        QTreeWidgetItem *item = new QTreeWidgetItem(mGroupItems.value(mediaType), EntryType);
         QVariant v;
         v.setValue(MimeTypeData(mt));
         item->setData(0, Qt::UserRole, v);
@@ -108,7 +108,7 @@ void MimetypeViewer::loadAllMimeTypes()
         mGroupItems.insert(mediaType, item);
     }
     for (const auto& scheme : schemes) {
-        QTreeWidgetItem *item = new QTreeWidgetItem(mGroupItems.value(mediaType), EntrieType);
+        QTreeWidgetItem *item = new QTreeWidgetItem(mGroupItems.value(mediaType), EntryType);
         MimeTypeData data = MimeTypeData();
         data.setName(mediaType + QStringLiteral("/") + scheme);
         QVariant v;
@@ -150,7 +150,7 @@ MimetypeViewer::MimetypeViewer(QWidget *parent)
     mMimeappsTemp.close();
     // remember the DE's default apps list
     QList<QByteArray> desktopsList = qgetenv("XDG_CURRENT_DESKTOP").toLower().split(':');
-    if (!desktopsList.isEmpty())
+    if (!desktopsList.isEmpty() && !desktopsList.at(0).isEmpty())
     {
         ba.clear();
         QString DEMimeappsListPath(XdgDirs::configHome(true)
@@ -402,7 +402,7 @@ void MimetypeViewer::filter(const QString& pattern)
         widget.mimetypeTreeWidget->topLevelItem(i)->setHidden(true);
     }
 
-    for(QTreeWidgetItem* it : qAsConst(mItemList)) {
+    for(QTreeWidgetItem* it : std::as_const(mItemList)) {
         mimeData = it->data(0, Qt::UserRole).value<MimeTypeData>();
         if (pattern.isEmpty() || mimeData.matches(pattern)) {
             const int i = mimeData.name().indexOf(QLatin1Char('/'));
@@ -469,7 +469,7 @@ void MimetypeViewer::dialogButtonBoxClicked(QAbstractButton* button)
         QFile::copy(mMimeappsTemp.fileName(), mimeappsListPath);
         // restore the DE's default apps list
         QList<QByteArray> desktopsList = qgetenv("XDG_CURRENT_DESKTOP").toLower().split(':');
-        if (!desktopsList.isEmpty())
+        if (!desktopsList.isEmpty() && !desktopsList.at(0).isEmpty())
         {
             QString DEMimeappsListPath(XdgDirs::configHome(true)
                                         + QStringLiteral("/")

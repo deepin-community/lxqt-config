@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * https://lxqt-project.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -132,18 +132,41 @@ public:
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override
     {
+        Q_UNUSED(parent)
         return m_list.count();
     }
 
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override
+    bool setData(const QModelIndex &, const QVariant &, int role = Qt::EditRole) override
     {
+        Q_UNUSED(role)
         return false;
     }
 
     QVariant data(const QModelIndex &index, int role) const override
     {
-        if (role == Qt::DisplayRole || role == Qt::ToolTipRole)
+        if (role == Qt::DisplayRole)
             return m_list[index.row()].xdg().name();
+        if (role == Qt::ToolTipRole)
+        {
+            QString toolTip;
+            auto name = m_list[index.row()].xdg().name();
+            auto gName = m_list[index.row()].xdg().localizedValue(QStringLiteral("GenericName")).toString();
+            if (!gName.isEmpty() && QString::compare(gName, name, Qt::CaseInsensitive) != 0)
+            {
+                toolTip = QStringLiteral("<p><b>") + name
+                          + QStringLiteral("</b></p><p><i>") + gName + QStringLiteral("</i></p>");
+            }
+            else
+                toolTip = QStringLiteral("<p><b>") + name + QStringLiteral("</b></p>");
+            auto comment = m_list[index.row()].xdg().comment();
+            if (!comment.isEmpty()
+                && QString::compare(comment, name, Qt::CaseInsensitive) != 0
+                && QString::compare(comment, gName, Qt::CaseInsensitive) != 0)
+            {
+                toolTip += QStringLiteral("<p>") + comment + QStringLiteral("</p>");
+            }
+            return toolTip;
+        }
         if (role == QCategorizedSortFilterProxyModel::CategoryDisplayRole)
             return m_list[index.row()].category();
         if (role == QCategorizedSortFilterProxyModel::CategorySortRole)
@@ -229,7 +252,7 @@ LXQtConfig::MainWindow::MainWindow() : QMainWindow()
 
     QTimer::singleShot(0, [this] { setSizing(); });
     QTimer::singleShot(1, this, SLOT(load()));
-    new QShortcut{QKeySequence{Qt::CTRL + Qt::Key_Q}, this, SLOT(close())};
+    new QShortcut{QKeySequence{Qt::CTRL | Qt::Key_Q}, this, SLOT(close())};
 }
 
 void LXQtConfig::MainWindow::load()
@@ -259,7 +282,7 @@ void LXQtConfig::MainWindow::activateItem()
 
 /*Note: all this delayed activation is here to workaround the auto-repeated
  * Enter/Return key activation -> if the user keeps pressing the enter/return
- * we normaly will keep activating (spawning new processes) until the focus
+ * we normally will keep activating (spawning new processes) until the focus
  * isn't stolen from our window. New process is not spawned until the
  * (non-autorepeated) KeyRelease is delivered.
  *

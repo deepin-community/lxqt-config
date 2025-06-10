@@ -1,7 +1,7 @@
 project(lxqt-config-appearance)
 
 include_directories(
-    ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
+    ${Qt6Gui_PRIVATE_INCLUDE_DIRS}
     "${CMAKE_CURRENT_SOURCE_DIR}/../liblxqt-config-cursor"
 )
 
@@ -28,13 +28,16 @@ set(CPP_FILES
     fontconfigfile.cpp
     configothertoolkits.cpp
     colorLabel.cpp
+    gtkconfig.cpp
 )
 
 set(UI_FILES
     iconthemeconfig.ui
     lxqtthemeconfig.ui
     fontsconfig.ui
+    palettes.ui
     styleconfig.ui
+    gtkconfig.ui
 )
 
 set(QRC_FILES "")
@@ -56,7 +59,7 @@ lxqt_translate_ts(QM_FILES
 )
 
 lxqt_app_translation_loader(QM_LOADER ${PROJECT_NAME})
-lxqt_translate_desktop(DESKTOP_FILES SOURCES ${PROJECT_NAME}.desktop.in)
+lxqt_translate_desktop(DESKTOP_FILES SOURCES ${PROJECT_NAME}.desktop.in USE_YAML)
 
 #************************************************
 
@@ -70,9 +73,8 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-    Qt5::Widgets
-    Qt5::X11Extras
-    Qt5::Xml
+    Qt6::Widgets
+    Qt6::Xml
     ${LIBRARIES}
     lxqt-config-cursor
 )

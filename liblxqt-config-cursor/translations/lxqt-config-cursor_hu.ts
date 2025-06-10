@@ -6,15 +6,15 @@
     <message>
         <location filename="../selectwnd.ui" line="14"/>
         <source>LXQt Mouse Theme Configuration</source>
-        <translation>LXQt egértéma beállítása</translation>
+        <translation>LXQt egértéma beállítások</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="46"/>
+        <location filename="../selectwnd.ui" line="20"/>
         <source>Select the cursor theme you want to use (hover preview to test cursor). &lt;b&gt;LXQt session needs restart after this change&lt;/b&gt;:</source>
-        <translation>Válassza ki a kurzor témát amit szeretne használni. &lt;b&gt;Érvényesítéshez az LXQt munkamenetet újra kell indítani&lt;/b&gt;:</translation>
+        <translation>Válassza ki a kurzor témát amit szeretne használni. &lt;b&gt;Az érvényesítéshez az LXQt munkamenetet újra kell indítani&lt;/b&gt;:</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="23"/>
+        <location filename="../selectwnd.ui" line="104"/>
         <source>&amp;Install New Theme...</source>
         <translation>Ú&amp;j téma telepítése...</translation>
     </message>
@@ -24,22 +24,22 @@
         <translation>Az LXQt munkamenetet újra kell indítani a változás érvényesítéséhez.</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="91"/>
+        <location filename="../selectwnd.ui" line="111"/>
         <source>&amp;Remove Theme</source>
         <translation>Téma tö&amp;rlése</translation>
     </message>
     <message>
-        <location filename="../selectwnd.ui" line="111"/>
+        <location filename="../selectwnd.ui" line="65"/>
         <source>Size</source>
         <translation>Méret</translation>
     </message>
     <message>
-        <location filename="../selectwnd.cpp" line="233"/>
+        <location filename="../selectwnd.cpp" line="229"/>
         <source>XCurTheme error</source>
-        <translation>Témahiba</translation>
+        <translation>Kurzortéma-hiba</translation>
     </message>
     <message>
-        <location filename="../selectwnd.cpp" line="234"/>
+        <location filename="../selectwnd.cpp" line="230"/>
         <source>You can&apos;t remove active theme!</source>
         <translation>Az aktív témát nem lehet eltávolítani!</translation>
     </message>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../warninglabel.ui" line="44"/>
         <source>LXQt could not find any cursor theme. The default X11 cursor theme will be used instead. LXQt looked in the following directories:</source>
-        <translation>Az LXQt nem talált kurzor témát, ezért az alapértelmezett X11 téma lesz használva. Ezekben a mappákban kereste:</translation>
+        <translation>Az LXQt nem talált semmilyen kurzor témát. Az alapértelmezett X11 téma lesz használva helyette. Ezekben a mappákban kereste:</translation>
     </message>
     <message>
         <location filename="../warninglabel.ui" line="54"/>
@@ -65,12 +65,12 @@
 <context>
     <name>XCursorThemeModel</name>
     <message>
-        <location filename="../thememodel.cpp" line="61"/>
+        <location filename="../thememodel.cpp" line="62"/>
         <source>Name</source>
         <translation>Név</translation>
     </message>
     <message>
-        <location filename="../thememodel.cpp" line="62"/>
+        <location filename="../thememodel.cpp" line="63"/>
         <source>Description</source>
         <translation>Leírás</translation>
     </message>

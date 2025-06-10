@@ -1,8 +1,150 @@
-lxqt-config (0.16.1-1deepin0) unstable; urgency=medium
+lxqt-config (2.1.1-1) unstable; urgency=medium
 
-  * No source change upload against GCC 12.
+  [ Macy Lin ]
+  * New upstream version 2.1.1. (Closes: #976213)
+  * debian/copyright: update.
+  * debian/manpages: rename manpage for lxqt-config-input.
 
- -- Tianyu Chen <sweetyfish@deepin.org>  Fri, 20 Sep 2024 12:12:54 +0800
+  [ Andrew Lee (李健秋) ]
+  * debian/lintian-overrides: update.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Sat, 01 Mar 2025 16:31:49 +0100
+
+lxqt-config (2.1.0-2) unstable; urgency=medium
+
+  * debian/control: suggests on nm-connection-editor and
+    network-manager-applet package instead. (Closes: #1086832)
+
+ -- Macy Lin <macy@debconf.org>  Sat, 14 Dec 2024 22:21:21 +0100
+
+lxqt-config (2.1.0-1) unstable; urgency=medium
+
+  * New upstream version 2.1.0
+
+ -- ChangZhuo Chen (陳昌倬) <czchen@debian.org>  Thu, 05 Dec 2024 09:41:56 +0800
+
+lxqt-config (2.0.0-1) unstable; urgency=medium
+
+  * Migrate to unstable. (Closes: #1079809)
+  * Run wrap-and-sort.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Thu, 28 Nov 2024 21:07:37 +0100
+
+lxqt-config (2.0.0-1~exp1) experimental; urgency=medium
+
+  [ Severus Septimius ]
+  * New upstream release 2.0.0
+  * debian/control: bump dep qttranslations5-l10n -> qt6-translations-l10n
+  * debian/control: update Recommends to lxqt-qtplugin6
+  * debian/control: bump dep on qtbase5-private-dev -> qt6-base-private-
+    dev
+  * debian/control: remove dep on libqt5x11extras5-dev
+  * debian/control: bump dep on libkf5screen-dev -> libkscreen-dev
+  * debian/control: bump dep on libkf5windowsystem-dev ->
+    libkf6windowsystem-dev
+  * debian/control: bump dep on liblxqt1-dev -> liblxqt-dev
+  * debian/control: bump dep on lxqt-menu-data (>= 2.0.0~)
+
+  [ Andrew Lee (李健秋) ]
+  * debian/salsa-ci.yml: build against to experimental.
+  * debian/control: drop qt5-style-plugins from recommends as it's
+    included in qt6-base.
+  * debian/control: suggests on nm-tray over cmst and
+    network-manager-gnome.
+  * Run wrap-and-sort.
+  * debian/control: build-deps on liblayershellqtinterface-dev (>=
+    6.0.0~).
+  * debian/copyright: update.
+  * debian/control: build-deps on qt6-tools-dev.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Tue, 01 Oct 2024 17:10:14 +0200
+
+lxqt-config (1.4.0-2) unstable; urgency=medium
+
+  [ Macy Lin ]
+  * debian/control: build-deps on qttools5-dev. (Closes:#1078293)
+  * debian/control: bump to Standards-version to 4.7.0, no changes needed.
+  * debian/copyright: added myself.
+
+  [ Andrew Lee (李健秋) ]
+  * Clean up of group membership after 2nd calls.
+  * debian/copyright: update.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Wed, 11 Sep 2024 18:33:51 +0200
+
+lxqt-config (1.4.0-1) unstable; urgency=medium
+
+  [ ChangZhuo Chen (陳昌倬) ]
+  * Suppress blhc error.
+
+  [ Andrew Lee (李健秋) ]
+  * New upstream version 1.4.0.
+  * debian/control: build-deps on liblxqt1-dev (>= 1.4.0~).
+  * debian/control: build-deps on lxqt-menu-data.
+  * debian/lxqt-config.install: drop files that belongs to
+    lxqt-menu-data package.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Mon, 11 Dec 2023 17:55:32 +0100
+
+lxqt-config (1.3.0-1) unstable; urgency=medium
+
+  * New upstream version 1.3.0
+  * debian/control: update team address.
+  * debian/control: bump to Standards-version to 4.6.2, no changes needed.
+  * debian/control: build-deps on liblxqt1-dev (>= 1.3.0~).
+  * debian/control: clean up build-deps.
+  * debian/copyright: update.
+  * debian/upstream/metadata: drop obsolete field Name.
+  * debian/upstream/metadata: update url for git repo.
+  * debian/upstream/metadata: add Repository-Browse field.
+  * debian/rules: Drop --fail-missing argument to dh_missing which is now
+    default in debhelper 13.
+  * debian/control: update Suggests from gnome-themes-standard to
+    gnome-themes-extra. (Closes:#992403)
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Sat, 01 Jul 2023 09:51:56 +0200
+
+lxqt-config (1.2.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove unnecessary patch.
+  * Update d/control indent.
+  * Update d/copyright format and indent.
+  * Update d/watch for GitHub.
+
+ -- ChangZhuo Chen (陳昌倬) <czchen@debian.org>  Wed, 14 Dec 2022 23:34:14 +0800
+
+lxqt-config (1.1.0-3) unstable; urgency=medium
+
+  * Merge to unstable.
+
+ -- ChangZhuo Chen (陳昌倬) <czchen@debian.org>  Sat, 19 Nov 2022 00:08:26 +0800
+
+lxqt-config (1.1.0-2) experimental; urgency=medium
+
+  * Upstreamed compatible changes from Ubuntu, modifying the following files:
+    - control
+    - copyright
+    - lintian-overrides
+    - lxqt-config.install
+    - patches directory
+    - README.source
+    - rules
+    - upstream/*
+
+ -- Aaron Rainbolt <arraybolt3@gmail.com>  Thu, 14 Jul 2022 14:22:12 -0500
+
+lxqt-config (1.1.0-1) experimental; urgency=medium
+
+  * Add debian/salsa-ci.yml file.
+  * Update debian/upstream/signing-key.asc.
+  * New upstream version 1.0.0
+  * New upstream version 1.1.0
+  * Build-deps on liblxqt1-dev (>= 1.1.0~).
+  * Drop lxqt-config (<< 0.11.0) from Breaks and Replaces.
+  * lxqt-config.install: ship lxqt-settings-other.directory file.
+
+ -- Andrew Lee (李健秋) <ajqlee@debian.org>  Wed, 13 Jul 2022 23:17:48 +0800
 
 lxqt-config (0.16.1-1) unstable; urgency=medium
 

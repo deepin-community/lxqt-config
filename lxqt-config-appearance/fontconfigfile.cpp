@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2014  Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
- * LXQt project: https://lxqt.org/
+ * LXQt project: https://lxqt-project.org/
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -229,7 +229,7 @@ void FontConfigFile::queueSave()
     {
         mSaveTimer = new QTimer();
         mSaveTimer->setSingleShot(true);
-        connect(mSaveTimer, SIGNAL(timeout()), this, SLOT(save()));
+        connect(mSaveTimer, &QTimer::timeout, this, &FontConfigFile::save);
         mSaveTimer->start(1500);
     }
 }

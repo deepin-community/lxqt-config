@@ -67,7 +67,7 @@ class QCategoryDrawerV2;
   *
   * @note There is a really performance boost if CategorySortRole returns an int instead of a QString.
   *       Have present that this role is asked (n * log n) times when sorting and compared. Comparing
-  *       ints is always faster than comparing strings, whithout mattering how fast the string
+  *       ints is always faster than comparing strings, without mattering how fast the string
   *       comparison is. Consider thinking of a way of returning ints instead of QStrings if your
   *       model can contain a high number of items.
   *
@@ -309,7 +309,7 @@ protected:
       */
     void dataChanged(const QModelIndex &topLeft,
                              const QModelIndex &bottomRight,
-                             const QVector<int> & roles = QVector<int> ()) override;
+                             const QList<int> & roles = QList<int> ()) override;
 
     /**
       * Reimplemented from QAbstractItemView.

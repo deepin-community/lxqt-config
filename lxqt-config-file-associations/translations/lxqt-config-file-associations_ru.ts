@@ -5,7 +5,7 @@
     <name>ApplicationChooser</name>
     <message>
         <location filename="../applicationchooser.ui" line="14"/>
-        <source>ApplicationChooser</source>
+        <source>Application Chooser</source>
         <translation>Выбор приложения</translation>
     </message>
     <message>
@@ -57,7 +57,7 @@
         <location filename="../applicationchooser.cpp" line="193"/>
         <location filename="../applicationchooser.cpp" line="219"/>
         <source>Other applications that handle %1</source>
-        <translation>Другие приложение для %1</translation>
+        <translation>Прочие приложения для работы с %1</translation>
     </message>
     <message>
         <location filename="../applicationchooser.cpp" line="194"/>
@@ -122,7 +122,7 @@
     <message>
         <location filename="../mimetypeviewer.ui" line="30"/>
         <source>Associations</source>
-        <translation>Ассоциации </translation>
+        <translation>Ассоциации</translation>
     </message>
     <message>
         <location filename="../mimetypeviewer.ui" line="206"/>
